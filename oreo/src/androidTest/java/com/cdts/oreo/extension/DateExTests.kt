@@ -1,4 +1,4 @@
-package com.cdts.sdk.extension
+package com.cdts.oreo.extension
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

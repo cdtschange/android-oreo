@@ -1,4 +1,4 @@
-package com.cdts.sdk;
+package com.cdts.oreo;
 
 import org.junit.Test;
 

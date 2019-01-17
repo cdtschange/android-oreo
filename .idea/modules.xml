@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android-oreo.iml" filepath="$PROJECT_DIR$/android-oreo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sdk/sdk.iml" filepath="$PROJECT_DIR$/sdk/sdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oreo/oreo.iml" filepath="$PROJECT_DIR$/oreo/oreo.iml" />
     </modules>
   </component>
 </project>
