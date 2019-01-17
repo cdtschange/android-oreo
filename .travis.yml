@@ -20,6 +20,10 @@ before_script:
 # 修改你的 gradlew的权限，默认gradlew没有权限执行的
 - chmod +x gradlew
 
+after_success:
+- sleep 5
+- bash <(curl -s https://codecov.io/bash)
+
 #- echo no | android create avd --force -n test -t android-28 --abi armeabi-v7a
 #- emulator -avd test -no-audio -no-window &
 #- android-wait-for-emulator
