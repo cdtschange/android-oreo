@@ -43,6 +43,20 @@ dependencies {
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+
+    api "com.jakewharton.timber:timber:$rootProject.timber_version"
+    api "com.squareup.okhttp3:okhttp:$rootProject.okhttp_version"
+    api "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp_version"
+    api "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$rootProject.retrofit_version"
+    api "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofit_version"
+    api "io.reactivex.rxjava2:rxjava:$rootProject.rxjava_version"
+    api "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid_version"
+    api "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxbinding_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.kotlin_coroutines_version"
+
+    api "com.kaopiz:kprogresshud:$rootProject.kprogresshud_version"
 }
 repositories {
     mavenCentral()
