@@ -13,7 +13,8 @@ branches:
   - master
 
 script:
-- ./gradlew assembleRelease
+#- ./gradlew assembleRelease
+- ./gradlew build connectedCheck
 
 # Emulator Management: Create, Start and Wait
 before_script:
