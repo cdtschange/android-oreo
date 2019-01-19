@@ -1,7 +1,7 @@
-package com.cdts.oreo.dagger.application
+package com.cdts.demo.dagger.view
 
 import javax.inject.Scope
 
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
-annotation class ApplicationScope
+annotation class ActivityScope

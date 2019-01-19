@@ -1,7 +1,7 @@
-package com.cdts.oreo.dagger.application
+package com.cdts.demo.dagger.application
 
 import android.app.Application
-import com.cdts.oreo.dagger.application.module.ApplicationModule
+import com.cdts.demo.dagger.application.module.ApplicationModule
 import dagger.Component
 
 @ApplicationScope

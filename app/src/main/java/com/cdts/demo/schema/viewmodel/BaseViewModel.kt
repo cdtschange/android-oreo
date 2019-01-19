@@ -1,6 +1,6 @@
-package com.cdts.oreo.schema.viewmodel
+package com.cdts.demo.schema.viewmodel
 
-import com.cdts.oreo.ui.application.MyApplication
+import com.cdts.demo.ui.application.MyApplication
 import com.cdts.oreo.ui.schema.viewmodel.ORBaseViewModel
 import javax.inject.Inject
 

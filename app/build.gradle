@@ -9,7 +9,7 @@ android {
     buildToolsVersion rootProject.build_tools_version
 
     defaultConfig {
-        applicationId "com.cdts.oreo"
+        applicationId "com.cdts.demo"
         minSdkVersion rootProject.min_sdk_version
         targetSdkVersion rootProject.target_sdk_version
         versionCode 1
@@ -41,5 +41,10 @@ dependencies {
     testImplementation "junit:junit:$rootProject.junit_version"
     androidTestImplementation "com.android.support.test:runner:$rootProject.support_test_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.support_test_espresso_version"
+
+
+    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
+    kapt "android.arch.lifecycle:compiler:$rootProject.lifecycle_version"
+
     implementation project(':oreo')
 }

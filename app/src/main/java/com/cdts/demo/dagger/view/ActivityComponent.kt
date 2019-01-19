@@ -1,7 +1,7 @@
-package com.cdts.oreo.dagger.view
+package com.cdts.demo.dagger.view
 
-import com.cdts.oreo.dagger.application.ApplicationComponent
-import com.cdts.oreo.dagger.view.module.ActivityModule
+import com.cdts.demo.dagger.application.ApplicationComponent
+import com.cdts.demo.dagger.view.module.ActivityModule
 import dagger.Component
 
 @ActivityScope

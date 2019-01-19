@@ -1,7 +1,7 @@
-package com.cdts.oreo.dagger.view.module
+package com.cdts.demo.dagger.view.module
 
 import android.support.v7.app.AppCompatActivity
-import com.cdts.oreo.dagger.view.ActivityScope
+import com.cdts.demo.dagger.view.ActivityScope
 import dagger.Module
 import dagger.Provides
 

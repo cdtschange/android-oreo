@@ -1,8 +1,9 @@
-package com.cdts.oreo.ui.application
+package com.cdts.demo.ui.application
 
 import android.app.Application
-import com.cdts.oreo.dagger.application.ApplicationComponent
-import com.cdts.oreo.dagger.application.module.ApplicationModule
+import com.cdts.demo.dagger.application.ApplicationComponent
+import com.cdts.demo.dagger.application.module.ApplicationModule
+import com.cdts.oreo.ui.application.ORApplication
 
 class MyApplication: Application() {
 
