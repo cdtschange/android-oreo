@@ -2,25 +2,35 @@
 
 buildscript {
     ext {
-        compileSdkVersion = 27
-        minSdkVersion = 16
-        targetSdkVersion = 27
-        buildToolsVersion = '27.0.3'
+        compile_sdk_version = 28
+        min_sdk_version = 19
+        target_sdk_version = 28
+        build_tools_version = '28.0.3'
 
         kotlin_version = '1.3.11'
         android_plugin_version = '3.1.3'
-        support_library_version = '27.1.1'
-        constraint_layout_version = '1.1.2'
+        support_library_version = '28.0.0'
+        constraint_layout_version = '1.1.3'
+        junit_version = '4.12'
+        support_test_version = '1.0.2'
+        support_test_espresso_version = '3.0.2'
 
         timber_version = '4.7.1'
-        okhttp_version = '3.11.0'
-        retrofit_version = '2.4.0'
-        rxjava_version = '2.2.0'
-        rxandroid_version = '2.0.2'
-        rxbinding_version = '2.1.1'
+        okhttp_version = '3.12.1'
+        retrofit_version = '2.5.0'
+        rxjava_version = '2.2.5'
+        rxandroid_version = '2.1.0'
+        rxbinding_version = '2.2.0'
+        dagger_version = '2.21'
+        lifecycle_version = '1.1.1'
         kotlin_coroutines_version = '1.1.0'
 
+        rxpermissions_version = '0.10.2'
         kprogresshud_version = '1.2.0'
+        disklru_cache_version = '2.0.2'
+        blankj_utilcode_version = '1.22.10'
+        systembar_tint_version = '1.0.4'
+        ptr_refresh_loadmore_version = '1.0.6'
     }
 
 
@@ -41,6 +51,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
 }
 

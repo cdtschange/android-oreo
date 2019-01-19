@@ -27,6 +27,7 @@ import timber.log.Timber
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.InputStream
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 
@@ -71,7 +72,7 @@ private interface ORApiInterface {
 
 abstract class ORNetApiModel {
     @Transient
-    open var identifier: String = ""
+    open var identifier: String = UUID.randomUUID().toString()
     @Transient
     open var url: String = ""
     @Transient
@@ -83,8 +84,6 @@ abstract class ORNetApiModel {
     var responseData: Any? = null
     @Transient
     var error: ORError? = null
-
-    inline fun<reified T> toModel(str: String): T? = Gson().fromJson(str)
 
     open fun fill(data: Any) {}
 
@@ -176,9 +175,6 @@ abstract class ORNetApi {
         if (api.error != null) {
             return Observable.error(api.error)
         }
-        if (!ORNetClient.networkConnected) {
-            return Observable.error<T>(ORError(ORStatusCode.BadRequest.value, "网络未连接，请检查网络设置"))
-        }
         val request = getDataRequest(format).create(ORApiInterface::class.java)
         val requestUrl = adapt(api.url)
         val observer = when (api.method) {
@@ -187,7 +183,6 @@ abstract class ORNetApi {
             ORHttpMethod.PUT -> request.put(requestUrl, api.params)
             ORHttpMethod.DELETE -> request.delete(requestUrl, api.params)
             ORHttpMethod.MULTIPART -> request.multipart(requestUrl, getMultipartBody(api), getMultipartBodyParts(api as ORNetApiUploadMultipartProtocol))
-            else ->request.get(requestUrl, api.params)
         }
         ORNetClient.add(api)
         ORNetIndicatorClient.show(api)
@@ -235,7 +230,7 @@ abstract class ORNetApi {
             val model = Gson().fromJson(json, api.javaClass)
             sink.onNext(model)
             sink.onComplete()
-        }.onErrorResumeNext { e: Throwable ->
+        }.onErrorResumeNext { _: Throwable ->
             Observable.just(api)
         }
     }
@@ -272,7 +267,7 @@ abstract class ORNetApi {
 
     private fun createMultipartBodyPart(model: ORUploadMultipartFile): MultipartBody.Part {
         val extension = MimeTypeMap.getFileExtensionFromUrl(model.file.toURI().toString())
-        val mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension)
+        val mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension)!!
         val fileBody = RequestBody.create(MediaType.parse(mimeType), model.file)
         return MultipartBody.Part.createFormData(model.name, model.fileName, fileBody)
     }
