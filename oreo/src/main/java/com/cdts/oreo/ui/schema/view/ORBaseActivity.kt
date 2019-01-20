@@ -17,6 +17,7 @@ import com.cdts.oreo.data.model.SerializableMap
 import com.cdts.oreo.data.network.ORError
 import com.cdts.oreo.extension.addClickAction
 import com.cdts.oreo.ui.router.ORRouter
+import com.cdts.oreo.ui.router.ORRouterProtocol
 import com.cdts.oreo.ui.schema.lifecycle.ORActivityLifecycleObserver
 import com.cdts.oreo.ui.schema.viewmodel.ORBaseViewModel
 import com.cdts.oreo.ui.view.indicator.ORIndicator
@@ -27,7 +28,7 @@ import io.reactivex.Observable
 import timber.log.Timber
 import java.lang.reflect.Field
 
-abstract class ORBaseActivity: AppCompatActivity() {
+abstract class ORBaseActivity: AppCompatActivity(), ORRouterProtocol {
 
     interface OnResultObserverListener {
         fun invoke(requestCode: Int, resultCode: Int, data: Intent?)
@@ -102,7 +103,7 @@ abstract class ORBaseActivity: AppCompatActivity() {
             }
         }
     }
-    fun setParams(map: SerializableMap) {
+    override fun setParams(map: SerializableMap) {
         val params = map.map?.entries
         if (params != null) {
             for ((key, value) in params) {
@@ -230,7 +231,7 @@ abstract class ORBaseActivity: AppCompatActivity() {
         supportFragmentManager.popBackStack()
     }
 
-    open fun routedBackEvent(from: String, result: Boolean, params: Map<String, Any> = mapOf()) {}
+    override fun routedBackEvent(from: String, result: Boolean, params: Map<String, Any> = mapOf()) {}
 
 
     fun topMostActivity(): AppCompatActivity {
