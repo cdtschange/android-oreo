@@ -13,6 +13,7 @@ android {
         targetSdkVersion rootProject.target_sdk_version
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -52,6 +53,10 @@ dependencies {
     api "com.android.support:design:$rootProject.support_library_version"
     testImplementation "junit:junit:$rootProject.junit_version"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.kotlin_version"
+    testImplementation "com.android.support.test:runner:$rootProject.support_test_version"
+    testImplementation "com.android.support.test.espresso:espresso-core:$rootProject.support_test_espresso_version"
+    androidTestImplementation "junit:junit:$rootProject.junit_version"
+    androidTestImplementation "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.kotlin_version"
     androidTestImplementation "com.android.support.test:runner:$rootProject.support_test_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.support_test_espresso_version"
 
@@ -88,6 +93,7 @@ dependencies {
     api "androidx.core:core-ktx:$rootProject.ktx_version"
     api "com.flyco.dialog:FlycoDialog_Lib:$rootProject.flyco_dialog_version"
     api "com.google.code.gson:gson:$rootProject.gson_version"
+    api "com.android.support:multidex:$rootProject.multidex_version"
 
 
 }

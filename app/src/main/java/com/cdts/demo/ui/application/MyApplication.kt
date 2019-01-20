@@ -4,6 +4,7 @@ import android.app.Application
 import com.cdts.demo.dagger.application.ApplicationComponent
 import com.cdts.demo.dagger.application.DaggerApplicationComponent
 import com.cdts.demo.dagger.application.module.ApplicationModule
+import com.cdts.demo.libs.UMengLib
 import com.cdts.oreo.ui.application.ORApplication
 
 class MyApplication: Application() {
@@ -19,5 +20,7 @@ class MyApplication: Application() {
             .builder()
             .applicationModule(ApplicationModule(this))
             .build()
+
+        UMengLib.setup(this)
     }
 }
