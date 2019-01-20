@@ -26,7 +26,8 @@ class DataFragment : BaseListFragment() {
 
     @Inject
     lateinit var mViewModel: MenuListViewModel
-    override var viewModel: ORBaseViewModel = mViewModel
+    override var viewModel: ORBaseViewModel = ORBaseViewModel()
+        get() = mViewModel
 
     override var listViewType: ORBaseListFragment.ListViewType = ORBaseListFragment.ListViewType.None
 
@@ -47,18 +48,18 @@ class DataFragment : BaseListFragment() {
 
     override fun setupUI() {
         super.setupUI()
-        mViewModel.type = MenuType.UI
+        mViewModel.type = MenuType.Data
     }
 
     override fun setupNavigation() {
         super.setupNavigation()
-        demoToolBar.centerText = resources.getString(R.string.ui)
+        demoToolBar.centerText = resources.getString(R.string.data)
         demoToolBar.showBackButton = false
     }
 
     override fun loadData() {
         super.loadData()
-        viewModel.fetchData()
+        fetchData()
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {

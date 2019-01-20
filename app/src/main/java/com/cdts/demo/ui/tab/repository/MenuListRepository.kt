@@ -25,6 +25,7 @@ class MenuListRepository @Inject constructor(): BaseRepository() {
                 return data
             }
             MenuType.Data -> {
+                return listOf(MenuModel("Crash", "", "", mapOf(), null))
                 val data = mutableListOf<MenuModel>()
 //                data.add(ListItem("Location", "(${AKLocation.locationModel?.latitude ?: 0.0}, ${AKLocation.locationModel?.longitude ?: 0.0})", LocationActivity::class.java.name))
 //                data.add(ListItem("Device", "Device Info", DeviceInfoActivity::class.java.name))

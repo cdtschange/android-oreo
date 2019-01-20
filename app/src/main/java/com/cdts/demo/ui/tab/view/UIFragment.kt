@@ -22,7 +22,8 @@ class UIFragment : BaseListFragment() {
 
     @Inject
     lateinit var mViewModel: MenuListViewModel
-    override var viewModel: ORBaseViewModel = mViewModel
+    override var viewModel: ORBaseViewModel = ORBaseViewModel()
+        get() = mViewModel
 
     override var listViewType: ListViewType = ListViewType.None
 
@@ -54,7 +55,7 @@ class UIFragment : BaseListFragment() {
 
     override fun loadData() {
         super.loadData()
-        viewModel.fetchData()
+        fetchData()
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {

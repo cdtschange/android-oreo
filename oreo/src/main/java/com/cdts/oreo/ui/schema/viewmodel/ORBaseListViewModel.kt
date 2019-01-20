@@ -5,7 +5,7 @@ import android.database.DataSetObservable
 import android.view.View
 import android.view.ViewGroup
 
-abstract class ORBaseListViewModel: ORBaseViewModel() {
+open class ORBaseListViewModel: ORBaseViewModel() {
 
     val dataSetObservable = DataSetObservable()
 

@@ -21,7 +21,7 @@ abstract class ORBaseListFragment : ORBaseFragment(), PtrHandler2, ListAdapter {
 
     override var layoutResID: Int = R.layout.fragment_or_list
 
-    open var listViewModel: ORBaseListViewModel = viewModel as ORBaseListViewModel
+    open var listViewModel: ORBaseListViewModel = ORBaseListViewModel()
         get() = viewModel as ORBaseListViewModel
 
     open var list: ListView? = null
