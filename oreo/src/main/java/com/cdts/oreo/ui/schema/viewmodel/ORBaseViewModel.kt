@@ -46,7 +46,13 @@ open class ORBaseViewModel: ViewModel() {
         }
     }
 
-    open var repository: ORBaseRepository? = null
+    init {
+        setupDagger()
+    }
+
+    open lateinit var repository: ORBaseRepository
+
+    open fun setupDagger() {}
 
     open fun fetchData(): Observable<Any> {
         return Observable.just(true)

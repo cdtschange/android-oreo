@@ -8,11 +8,14 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.cdts.oreo.data.network.ORError
 import com.cdts.oreo.ui.router.ORRouter
 import com.cdts.oreo.ui.schema.lifecycle.ORActivityLifecycleObserver
 import com.cdts.oreo.ui.schema.viewmodel.ORBaseViewModel
+import com.cdts.oreo.ui.view.indicator.ORIndicator
 import com.cdts.oreo.ui.view.indicator.ORIndicatorProtocol
 import com.cdts.oreo.ui.view.toolbar.ORToolBar
+import io.reactivex.Observable
 import timber.log.Timber
 
 
@@ -20,8 +23,8 @@ abstract class ORBaseFragment : Fragment() {
 
     abstract var layoutResID: Int
     abstract var titleBar: ORToolBar?
-    open var indicator: ORIndicatorProtocol? = null
-    open var viewModel: ORBaseViewModel? = null
+    open lateinit var indicator: ORIndicatorProtocol
+    open lateinit var viewModel: ORBaseViewModel
 
     var rootView: View? = null
     private lateinit var lifecycleObserver: ORActivityLifecycleObserver
@@ -77,6 +80,29 @@ abstract class ORBaseFragment : Fragment() {
     open fun setupUI() {}
 
     open fun loadData() {}
+
+    open fun showIndicator() {
+        indicator.show(activity, null)
+    }
+    open fun hideIndicator() {
+        indicator.hide()
+    }
+    open fun showTip(error: Throwable, completion: () -> Unit = {}) {
+        when(error) {
+            is ORError -> showTip(error.message, completion)
+            else -> showTip(error.message ?: error.toString(), completion)
+        }
+    }
+    open fun showTip(tip: String, completion: () -> Unit = {}) {
+        (indicator as ORIndicator).showTip(activity, tip, 2, completion)
+    }
+
+    open fun showIndicatorObserver(): Observable<Unit> {
+        return Observable.create { sink ->
+            showIndicator()
+            sink.onNext(Unit)
+        }
+    }
 
     /**
      * activity里嵌套fragment不能使用以下fragment方法

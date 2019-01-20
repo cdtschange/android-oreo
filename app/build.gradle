@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.compile_sdk_version
@@ -34,10 +33,8 @@ android {
 }
 
 dependencies {
+    implementation project(':oreo')
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlin_version"
-    implementation "com.android.support:appcompat-v7:$rootProject.support_library_version"
-    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraint_layout_version"
     testImplementation "junit:junit:$rootProject.junit_version"
     androidTestImplementation "com.android.support.test:runner:$rootProject.support_test_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.support_test_espresso_version"
@@ -46,5 +43,4 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
     kapt "android.arch.lifecycle:compiler:$rootProject.lifecycle_version"
 
-    implementation project(':oreo')
 }

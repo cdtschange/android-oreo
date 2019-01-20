@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/navigation_home"
+    android:id="@+id/nav_main">
+    <or_tab_fragment
+        android:id="@+id/navigation_home"
+        android:name="com.cdts.demo.ui.tab.view.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
+    </or_tab_fragment>
+    <or_tab_fragment
+        android:id="@+id/navigation_ui"
+        android:name="com.cdts.demo.ui.tab.view.UIFragment"
+        android:label="@string/ui"
+        tools:layout="@layout/fragment_list_with_toolbar">
+    </or_tab_fragment>
+    <or_tab_fragment
+        android:id="@+id/navigation_data"
+        android:name="com.cdts.demo.ui.tab.view.DataFragment"
+        android:label="@string/data"
+        tools:layout="@layout/fragment_list_with_toolbar">
+    </or_tab_fragment>
+</navigation>

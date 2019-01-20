@@ -11,7 +11,7 @@ class ApplicationModule(private val application: MyApplication) {
 
     @Provides
     @ApplicationScope
-    internal fun provideDemoApplication(): MyApplication {
+    internal fun provideMyApplication(): MyApplication {
         return application
     }
     @Provides

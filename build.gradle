@@ -21,9 +21,10 @@ buildscript {
         rxjava_version = '2.2.5'
         rxandroid_version = '2.1.0'
         rxbinding_version = '2.2.0'
+        kotlin_coroutines_version = '1.1.0'
         dagger_version = '2.21'
         lifecycle_version = '1.1.1'
-        kotlin_coroutines_version = '1.1.0'
+        navigation_version = '1.0.0-alpha05'
 
         rxpermissions_version = '0.10.2'
         kprogresshud_version = '1.2.0'

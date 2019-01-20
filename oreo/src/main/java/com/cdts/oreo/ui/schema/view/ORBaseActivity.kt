@@ -39,8 +39,8 @@ abstract class ORBaseActivity: AppCompatActivity() {
 
     abstract var layoutResID: Int
     abstract var titleBar: ORToolBar?
-    open var indicator: ORIndicatorProtocol? = null
-    open var viewModel: ORBaseViewModel? = null
+    open lateinit var indicator: ORIndicatorProtocol
+    open lateinit var viewModel: ORBaseViewModel
     open var canBackPress: Boolean = true
     private lateinit var lifecycleObserver: ORActivityLifecycleObserver
 
@@ -154,10 +154,10 @@ abstract class ORBaseActivity: AppCompatActivity() {
     open fun loadData() {}
 
     open fun showIndicator() {
-        indicator?.show(this, null)
+        indicator.show(this, null)
     }
     open fun hideIndicator() {
-        indicator?.hide()
+        indicator.hide()
     }
     open fun showTip(error: Throwable, completion: () -> Unit = {}) {
         when(error) {
@@ -166,7 +166,7 @@ abstract class ORBaseActivity: AppCompatActivity() {
         }
     }
     open fun showTip(tip: String, completion: () -> Unit = {}) {
-        (indicator as? ORIndicator)?.showTip(this, tip, 2, completion)
+        (indicator as ORIndicator).showTip(this, tip, 2, completion)
     }
 
     open fun showIndicatorObserver(): Observable<Unit> {

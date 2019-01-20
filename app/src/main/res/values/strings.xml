@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Oreo</string>
+
+    <string name="ptr_refreshing">Loading…</string>
+    <string name="ptr_refresh_complete">Pull Down to Refresh</string>
+    <string name="provider_authorities">com.androidkit.demo.fileprovider</string>
+    <string name="ui">UI</string>
+    <string name="data">Data</string>
+    <string name="home">Home</string>
+    <string name="android_kit">Android Kit</string>
+    <string name="desc">This is a default description</string>
 </resources>

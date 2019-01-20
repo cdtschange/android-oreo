@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.compile_sdk_version
@@ -45,9 +46,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "com.android.support:appcompat-v7:$rootProject.support_library_version"
+    api "com.android.support:appcompat-v7:$rootProject.support_library_version"
+    api "com.android.support.constraint:constraint-layout:$rootProject.constraint_layout_version"
+    api "com.android.support:support-v4:$rootProject.support_library_version"
+    api "com.android.support:design:$rootProject.support_library_version"
     testImplementation "junit:junit:$rootProject.junit_version"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlin_version"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.kotlin_version"
     androidTestImplementation "com.android.support.test:runner:$rootProject.support_test_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.support_test_espresso_version"
@@ -62,6 +65,7 @@ dependencies {
     api "io.reactivex.rxjava2:rxjava:$rootProject.rxjava_version"
     api "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid_version"
     api "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxbinding_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlin_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.kotlin_coroutines_version"
 
     api "com.google.dagger:dagger:$rootProject.dagger_version"
@@ -71,6 +75,8 @@ dependencies {
     api "android.arch.lifecycle:runtime:$rootProject.lifecycle_version"
     kapt "android.arch.lifecycle:compiler:$rootProject.lifecycle_version"
     api "android.arch.lifecycle:common-java8:$rootProject.lifecycle_version"
+    api "android.arch.navigation:navigation-fragment:$rootProject.navigation_version"
+    api "android.arch.navigation:navigation-ui:$rootProject.navigation_version"
 
     api "com.github.tbruyelle:rxpermissions:$rootProject.rxpermissions_version"
     api "com.kaopiz:kprogresshud:$rootProject.kprogresshud_version"

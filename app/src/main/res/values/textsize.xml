@@ -1,0 +1,40 @@
+<resources>
+    <!-- 文档规范4/7的比例大小,例如:60/1.75 = 34.3 -->
+    <dimen name="h60">34.3sp</dimen>
+    <dimen name="h36">18sp</dimen>
+    <dimen name="h28">15.4sp</dimen>
+    <dimen name="h26">14.8sp</dimen>
+    <dimen name="h24">13.7sp</dimen>
+    <dimen name="h18">10.3sp</dimen>
+    <dimen name="h15">8.6sp</dimen>
+
+    <dimen name="size6">6sp</dimen>
+    <dimen name="size8">8sp</dimen>
+    <dimen name="size9">9sp</dimen>
+    <dimen name="size10">10sp</dimen>
+    <dimen name="size11">11sp</dimen>
+    <dimen name="size12">12sp</dimen>
+    <dimen name="size13">13sp</dimen>
+    <dimen name="size14">14sp</dimen>
+    <dimen name="size15">15sp</dimen>
+    <dimen name="size16">16sp</dimen>
+    <dimen name="size17">17sp</dimen>
+    <dimen name="size18">18sp</dimen>
+    <dimen name="size19">19sp</dimen>
+    <dimen name="size20">20sp</dimen>
+    <dimen name="size21">21sp</dimen>
+    <dimen name="size22">22sp</dimen>
+    <dimen name="size23">23sp</dimen>
+    <dimen name="size24">24sp</dimen>
+    <dimen name="size25">25sp</dimen>
+    <dimen name="size26">26sp</dimen>
+    <dimen name="size28">28sp</dimen>
+    <dimen name="size30">30sp</dimen>
+    <dimen name="size32">32sp</dimen>
+    <dimen name="size34">34sp</dimen>
+    <dimen name="size36">36sp</dimen>
+    <dimen name="size38">38sp</dimen>
+    <dimen name="size40">40sp</dimen>
+    <dimen name="size44">44sp</dimen>
+    <dimen name="size50">50sp</dimen>
+</resources>
