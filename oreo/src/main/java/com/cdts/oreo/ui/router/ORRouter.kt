@@ -1,20 +1,15 @@
 package com.cdts.oreo.ui.router
 
-import android.app.Activity
-import android.content.Context
-import android.content.ContextWrapper
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import com.cdts.oreo.data.model.SerializableMap
 import timber.log.Timber
-import java.lang.Exception
 
 interface ORRouterProtocol {
     fun setParams(map: SerializableMap)
-    fun routedBackEvent(from: String, result: Boolean, params: Map<String, Any> = mapOf())
+    fun routedBackEvent(from: String, result: Boolean, params: Map<String, Any>)
 }
 
 object ORRouter {

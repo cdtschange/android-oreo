@@ -231,7 +231,7 @@ abstract class ORBaseActivity: AppCompatActivity(), ORRouterProtocol {
         supportFragmentManager.popBackStack()
     }
 
-    override fun routedBackEvent(from: String, result: Boolean, params: Map<String, Any> = mapOf()) {}
+    override fun routedBackEvent(from: String, result: Boolean, params: Map<String, Any>) {}
 
 
     fun topMostActivity(): AppCompatActivity {

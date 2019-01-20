@@ -84,6 +84,11 @@ dependencies {
     api "com.blankj:utilcode:$rootProject.blankj_utilcode_version"
     api "com.readystatesoftware.systembartint:systembartint:$rootProject.systembar_tint_version"
     api "in.srain.cube:ptr-load-more:$rootProject.ptr_refresh_loadmore_version"
+    api "com.github.lzyzsd:jsbridge:$rootProject.jsbridge_version"
+    api "androidx.core:core-ktx:$rootProject.ktx_version"
+    api "com.flyco.dialog:FlycoDialog_Lib:$rootProject.flyco_dialog_version"
+    api "com.google.code.gson:gson:$rootProject.gson_version"
+
 
 }
 repositories {

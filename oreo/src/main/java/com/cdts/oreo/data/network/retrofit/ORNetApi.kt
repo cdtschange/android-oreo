@@ -6,11 +6,9 @@ import android.graphics.BitmapFactory
 import android.webkit.MimeTypeMap
 import com.cdts.oreo.config.ORConfig
 import com.cdts.oreo.data.network.ORError
-import com.cdts.oreo.data.network.ORStatusCode
 import com.cdts.oreo.data.network.retrofit.converter.BitmapConverterFactory
 import com.cdts.oreo.data.network.retrofit.converter.InputStreamConverterFactory
 import com.cdts.oreo.data.network.retrofit.converter.StringConverterFactory
-import com.cdts.oreo.extension.fromJson
 import com.cdts.oreo.ui.view.indicator.ORIndicatorProtocol
 import com.google.gson.Gson
 import io.reactivex.Observable
