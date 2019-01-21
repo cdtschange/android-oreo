@@ -1,0 +1,6 @@
+language: android
+jdk:
+- oraclejdk8
+
+before_install:
+  - yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
