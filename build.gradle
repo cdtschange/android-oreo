@@ -38,6 +38,7 @@ buildscript {
         gson_version = '2.8.5'
         multidex_version = '1.0.3'
 
+
         umsdk_analytics_version = '8.0.0'
         umsdk_common_version = '2.0.0'
     }
@@ -50,6 +51,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.github.dcendents:android-maven-gradle-plugin:2.1"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
