@@ -3,4 +3,4 @@ jdk:
 - oraclejdk8
 
 before_install:
-  - $ANDROID_HOME/tools/bin/sdkmanager --update && yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
+  - echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --update && echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --licenses
