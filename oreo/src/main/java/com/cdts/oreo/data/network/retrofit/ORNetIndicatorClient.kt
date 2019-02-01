@@ -30,10 +30,11 @@ object ORNetIndicatorClient {
     }
 
     fun add(api: ORNetApiModel, indicator: ORIndicatorProtocol?, context: Context, text: String?) {
-        Timber.d("[OR][NetIndicator][+][] $api")
+        Timber.d("[OR][NetIndicator][+] $api")
         indicators[api.identifier] = IndicatorModel(api, WeakReference(indicator), WeakReference(context), text)
     }
     fun remove(api: ORNetApiModel) {
+        Timber.d("[OR][NetIndicator][-] $api")
         indicators.remove(api.identifier)
     }
 }

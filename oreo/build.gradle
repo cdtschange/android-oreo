@@ -54,6 +54,7 @@ dependencies {
     api "com.android.support.constraint:constraint-layout:$rootProject.constraint_layout_version"
     api "com.android.support:support-v4:$rootProject.support_library_version"
     api "com.android.support:design:$rootProject.support_library_version"
+    api "com.android.support:multidex:$rootProject.multidex_version"
     testImplementation "junit:junit:$rootProject.junit_version"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.kotlin_version"
     testImplementation "com.android.support.test:runner:$rootProject.support_test_version"
@@ -96,7 +97,6 @@ dependencies {
     api "androidx.core:core-ktx:$rootProject.ktx_version"
     api "com.flyco.dialog:FlycoDialog_Lib:$rootProject.flyco_dialog_version"
     api "com.google.code.gson:gson:$rootProject.gson_version"
-    api "com.android.support:multidex:$rootProject.multidex_version"
 
 
 }
