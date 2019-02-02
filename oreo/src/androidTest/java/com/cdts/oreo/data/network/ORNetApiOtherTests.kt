@@ -5,7 +5,6 @@ import com.cdts.oreo.data.network.retrofit.ORRequestType
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.junit.Assert
 import org.junit.Test
 
 
@@ -14,16 +13,15 @@ class TORNetApiOtherTests: BaseTestCase() {
     @Test
     fun testNetApiWithoutFill() {
 
-
         val apiModel = TestNetApiModel()
         val api = TestNetApi()
         api.baseUrlString = NetApiTestConstant.urlString
         apiModel.url = "get"
         api.signal(apiModel).subscribe({
-            Assert.assertTrue(true)
+            assert(true)
             signal()
         }, {
-            Assert.assertTrue(false)
+            assert(false)
             signal()
         })
 

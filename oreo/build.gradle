@@ -34,7 +34,8 @@ android {
 
     sourceSets {
         test.java.srcDirs += 'src/test/java'
-        test.java.srcDirs += 'src/androidTest/java'
+        androidTest.java.srcDirs += 'src/androidTest/java'
+        androidTest.resources.srcDirs += 'src/androidTest/res'
     }
 
     dataBinding {
@@ -62,7 +63,11 @@ dependencies {
     androidTestImplementation "junit:junit:$rootProject.junit_version"
     androidTestImplementation "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.kotlin_version"
     androidTestImplementation "com.android.support.test:runner:$rootProject.support_test_version"
+    androidTestImplementation "com.android.support.test:rules:$rootProject.support_test_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.support_test_espresso_version"
+    androidTestImplementation "org.mockito:mockito-core:$rootProject.mockito_version"
+    androidTestImplementation "org.mockito:mockito-android:$rootProject.mockito_version"
+    androidTestImplementation "com.nhaarman:mockito-kotlin:$rootProject.mockito_kotlin_version"
 
 
     api "com.jakewharton.timber:timber:$rootProject.timber_version"

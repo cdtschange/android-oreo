@@ -47,4 +47,6 @@ dependencies {
     implementation "com.umeng.umsdk:analytics:$rootProject.umsdk_analytics_version"
     implementation "com.umeng.umsdk:common:$rootProject.umsdk_common_version"
 
+    implementation "com.kaopiz:kprogresshud:$rootProject.kprogresshud_version"
+
 }

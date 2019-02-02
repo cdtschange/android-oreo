@@ -22,6 +22,13 @@ open class ORIndicator : ORIndicatorProtocol {
     private var hud: KProgressHUD? = null
     private var toast: Toast? = null
 
+    open fun createHUD(context: Context?): KProgressHUD? {
+        if (context == null) {
+            return null
+        }
+        return KProgressHUD.create(context)
+    }
+
     open fun showTip(context: Context?, text: String?, hideAfter: Int, completion: () -> Unit = {}) {
         if (context == null) {
             return
@@ -43,7 +50,7 @@ open class ORIndicator : ORIndicatorProtocol {
         }
         showing = true
         GlobalScope.launch(Dispatchers.Main) {
-            var hud = KProgressHUD.create(context).setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+            var hud = createHUD(context)!!.setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
             if (text != null) {
                 hud = hud.setLabel(text)
             }

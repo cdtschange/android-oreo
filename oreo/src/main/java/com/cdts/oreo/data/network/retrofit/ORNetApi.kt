@@ -34,13 +34,13 @@ enum class ORRequestType {
 }
 
 enum class ORHttpMethod {
-    GET, POST, PUT, DELETE, MULTIPART
+    GET, POST, PUT, DELETE
 }
 
 data class ORUploadMultipartFile(var file: File, var name: String, var fileName: String, var mimeType: String)
 
 interface ORNetApiUploadMultipartProtocol {
-    var files: Array<ORUploadMultipartFile>?
+    var files: List<ORUploadMultipartFile>?
 }
 
 interface ORNetApiImageProtocol {
@@ -64,7 +64,7 @@ private interface ORApiInterface {
 
     @Multipart
     @POST
-    fun multipart(@Url url: String, @PartMap body: Map<String, RequestBody>, @Part files: List<MultipartBody.Part>): Observable<Any>
+    fun multipart(@Url url: String, @PartMap body: Map<String, @JvmSuppressWildcards RequestBody>, @Part files: List<MultipartBody.Part>): Observable<@JvmSuppressWildcards Any>
 }
 
 
@@ -177,10 +177,15 @@ abstract class ORNetApi {
         val requestUrl = adapt(api.url)
         val observer = when (api.method) {
             ORHttpMethod.GET -> request.get(requestUrl, api.params)
-            ORHttpMethod.POST -> request.post(requestUrl, api.params)
+            ORHttpMethod.POST -> {
+                if (api is ORNetApiUploadMultipartProtocol) {
+                    request.multipart(requestUrl, getMultipartBody(api), getMultipartBodyParts(api))
+                } else {
+                    request.post(requestUrl, api.params)
+                }
+            }
             ORHttpMethod.PUT -> request.put(requestUrl, api.params)
             ORHttpMethod.DELETE -> request.delete(requestUrl, api.params)
-            ORHttpMethod.MULTIPART -> request.multipart(requestUrl, getMultipartBody(api), getMultipartBodyParts(api as ORNetApiUploadMultipartProtocol))
         }
         ORNetClient.add(api)
         ORNetIndicatorClient.show(api)
