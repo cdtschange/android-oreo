@@ -1,0 +1,162 @@
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "0.8.3"
+}
+//
+//task jacocoReport(type: JacocoReport, dependsOn: "connectedCheck") {
+//    println ":${project.name}:Generating Jacoco reports"
+//    reports {
+//        xml {
+//            enabled true // coveralls plugin depends on xml format report
+//        }
+//
+//        html {
+//            enabled true
+//        }
+//    }
+//
+//    afterEvaluate {
+//        classDirectories = files([
+//            fileTree(dir: "${buildDir}/intermediates/classes/debug",
+//                    exclude: ['**/dagger/**'])
+//        ])
+//    }
+//}
+//task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'connectedCheck']) {
+//    //we use "debug" build type for test coverage (can be other)
+//    group = "reporting"
+//    description = "Generate unified Jacoco code coverage report"
+//
+//    reports {
+//        xml.enabled = false
+//        html.enabled = true
+//        csv.enabled = false
+//        xml.destination = "${buildDir}/reports/jacocoTestReport.xml"
+//        html.destination = "${buildDir}/reports/jacoco"
+//        csv.destination = "${buildDir}/reports/jacocoTestReport.csv"
+//    }
+//
+//    def fileFilter = [
+//            '**/*Test*.*',
+//            '**/AutoValue_*.*',
+//            '**/*JavascriptBridge.class',
+//            '**/R.class',
+//            '**/R$*.class',
+//            '**/Manifest*.*',
+//            'android/**/*.*',
+//            '**/BuildConfig.*',
+//            '**/*$ViewBinder*.*',
+//            '**/*$ViewInjector*.*',
+//            '**/Lambda$*.class',
+//            '**/Lambda.class',
+//            '**/*Lambda.class',
+//            '**/*Lambda*.class',
+//            '**/*$InjectAdapter.class',
+//            '**/*$Module*.class',
+//            '**/*$ViewInjector*.class',
+//            '**/FragmentModule$provideMenuListViewModel$$inlined$createViewModel$1.class',
+//            '**/*_MembersInjector.class', //Dagger2 generated code
+//            '*/*_MembersInjector*.*', //Dagger2 generated code
+//            '**/*_*Factory*.*', //Dagger2 generated code
+//            '*/*Component*.*', //Dagger2 generated code
+//            '**/*Module*.*' //Dagger2 generated code
+//    ]
+//    def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: fileFilter)
+//    //we use "debug" build type for test coverage (can be other)
+//    def mainSrc = "${project.projectDir}/src/main/java"
+//
+//    sourceDirectories = files([mainSrc])
+//    classDirectories = files([debugTree])
+//    executionData = fileTree(dir: "$buildDir", includes: [
+//            "jacoco/testDebugUnitTest.exec", //we use "debug" build type for test coverage (can be other)
+//            "outputs/code-coverage/connected/*coverage.ec"
+//    ])
+//
+//}
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+    group = "Reporting"
+
+    description = "Generate Jacoco coverage reports"
+
+    // exclude auto-generated classes and tests
+    def fileFilter = ['*']
+    def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", includes: ["**/*Tests.class"], exclude: '*')
+    def kotlinDebugTree = fileTree(dir: "${buildDir}/tmp/kotlin-classes/debug", exclude: '*')
+    def mainSrc = "${project.projectDir}/src/main/kotlin" //指定源码目录
+    sourceDirectories = files([mainSrc])
+
+//    sourceDirectories = files([
+//            android.sourceSets.main.java.srcDirs,
+//            "src/main/kotlin"
+//    ])
+    classDirectories = files([debugTree], [kotlinDebugTree])
+//    additionalSourceDirs = files([
+//            "${buildDir}/generated/source/buildConfig/debug",
+//            "${buildDir}/generated/source/r/debug"
+//    ])
+//    executionData = fileTree(dir: project.projectDir, includes:
+//            ['**/*.exec', '**/*.ec'])
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+//project.afterEvaluate {
+//    // Grab all build types and product flavors
+//    def buildTypes = android.buildTypes.collect { type -> type.name }
+//    def productFlavors = android.productFlavors.collect { flavor -> flavor.name }
+//
+//    // When no product flavors defined, use empty
+//    if (!productFlavors) productFlavors.add('')
+//
+//    productFlavors.each { productFlavorName ->
+//        buildTypes.each { buildTypeName ->
+//            def sourceName, sourcePath
+//            if (!productFlavorName) {
+//                sourceName = sourcePath = "${buildTypeName}"
+//            } else {
+//                sourceName = "${productFlavorName}${buildTypeName.capitalize()}"
+//                sourcePath = "${productFlavorName}/${buildTypeName}"
+//            }
+//            def testTaskName = "test${sourceName.capitalize()}UnitTest"
+//
+//            // Create coverage task of form 'testFlavorTypeCoverage' depending on 'testFlavorTypeUnitTest'
+//            task "${testTaskName}Coverage" (type:JacocoReport, dependsOn: ["$testTaskName", "createDebugCoverageReport"]) {
+//                group = "Reporting"
+//                description = "Generate Jacoco coverage reports on the ${sourceName.capitalize()} build."
+//
+//                classDirectories = fileTree(
+//                        dir: "${project.buildDir}/intermediates/classes/${sourcePath}",
+//                        excludes: ['**/R.class',
+//                                   '**/R$*.class',
+//                                   '**/*$ViewInjector*.*',
+//                                   '**/*$ViewBinder*.*',
+//                                   '**/BuildConfig.*',
+//                                   '**/Manifest*.*',
+//                                   '**/*_MembersInjector.class',
+//                                   '**/Dagger*Component.class', // covers component implementations
+//                                   '**/Dagger*Component$Builder.class', // covers component builders
+//                                   '**/*Module_*Factory.class',
+//                                   '**/*Module*.class']
+//                )
+//
+//                def coverageSourceDirs = [
+//                        "src/main/java",
+//                        "src/$productFlavorName/java",
+//                        "src/$buildTypeName/java"
+//                ]
+//                additionalSourceDirs = files(coverageSourceDirs)
+//                sourceDirectories = files(coverageSourceDirs)
+//                executionData = files("${project.buildDir}/jacoco/${testTaskName}.exec")
+//
+//                reports {
+//                    xml.enabled = true
+//                    html.enabled = true
+//                }
+//            }
+//        }
+//    }
+//}

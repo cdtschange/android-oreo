@@ -5,7 +5,7 @@ import org.junit.Test
 
 
 class ORErrorTests: BaseTestCase() {
-    @Test
+//    @Test
     fun testORError() {
         val code = ORStatusCode.BadRequest.value
         val message = "test"

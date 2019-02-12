@@ -17,10 +17,19 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+//            testCoverageEnabled true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    sourceSets {
+        test.java.srcDirs += 'src/test/java'
+        androidTest.java.srcDirs += 'src/androidTest/java'
+        androidTest.resources.srcDirs += 'src/androidTest/res'
     }
 
     dataBinding {
@@ -37,8 +46,17 @@ dependencies {
     implementation project(':oreo')
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation "junit:junit:$rootProject.junit_version"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.kotlin_version"
+    testImplementation "com.android.support.test:runner:$rootProject.support_test_version"
+    testImplementation "com.android.support.test.espresso:espresso-core:$rootProject.support_test_espresso_version"
+    androidTestImplementation "junit:junit:$rootProject.junit_version"
+    androidTestImplementation "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.kotlin_version"
     androidTestImplementation "com.android.support.test:runner:$rootProject.support_test_version"
+    androidTestImplementation "com.android.support.test:rules:$rootProject.support_test_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.support_test_espresso_version"
+    androidTestImplementation "org.mockito:mockito-core:$rootProject.mockito_version"
+    androidTestImplementation "org.mockito:mockito-android:$rootProject.mockito_version"
+    androidTestImplementation "com.nhaarman:mockito-kotlin:$rootProject.mockito_kotlin_version"
 
 
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"

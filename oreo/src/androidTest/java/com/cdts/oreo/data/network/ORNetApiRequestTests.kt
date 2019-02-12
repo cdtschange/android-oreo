@@ -10,7 +10,7 @@ import org.junit.Test
 class ORNetApiRequestTests: BaseTestCase() {
 
 
-    @Test
+//    @Test
     fun testRequestGet() {
 
         class GetTestNetApi: TestNetApi() {
@@ -74,7 +74,7 @@ class ORNetApiRequestTests: BaseTestCase() {
     }
 
 
-    @Test
+//    @Test
     fun testRequestPost() {
 
         class PostTestNetApi: TestNetApi() {
@@ -121,7 +121,7 @@ class ORNetApiRequestTests: BaseTestCase() {
         await()
     }
 
-    @Test
+//    @Test
     fun testClearCookie() {
         ORCookie.clear()
         ORCookie.cookieArray = arrayOf()

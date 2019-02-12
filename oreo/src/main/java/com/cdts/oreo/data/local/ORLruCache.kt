@@ -128,6 +128,6 @@ open class ORLruCache {
     }
 
     private fun toInternalKey(key: String): String {
-        return key.md5()
+        return key.md5().toLowerCase()
     }
 }

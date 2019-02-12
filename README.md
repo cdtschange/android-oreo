@@ -7,8 +7,8 @@
     <a href="">
         <img src="http://img.shields.io/badge/Kotlin-1.3.11-blue.svg" />
     </a>
-    <a href="">
-        <img src="https://img.shields.io/badge/sdk-19+-blue.svg" />
+    <a href="https://android-arsenal.com/api?level=19">
+        <img src="https://img.shields.io/badge/API-19%2B-brightgreen.svg" />
     </a>
     <a href="https://jitpack.io/#cdtschange/android-oreo">
         <img src="https://jitpack.io/v/cdtschange/android-oreo.svg" />

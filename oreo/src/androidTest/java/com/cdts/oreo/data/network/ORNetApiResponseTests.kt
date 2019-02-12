@@ -8,7 +8,7 @@ import org.junit.Test
 
 class ORNetApiResponseTests: BaseTestCase() {
 
-    @Test
+//    @Test
     fun testResponseJson() {
 
         val apiModel = TestNetApiModel()
@@ -40,7 +40,7 @@ class ORNetApiResponseTests: BaseTestCase() {
         await()
     }
 
-    @Test
+//    @Test
     fun testResponseString() {
 
         val apiModel = TestStringNetApiModel()
@@ -65,7 +65,7 @@ class ORNetApiResponseTests: BaseTestCase() {
         await()
     }
 
-    @Test
+//    @Test
     fun testResponseData() {
 
         val apiModel = TestDataNetApiModel()

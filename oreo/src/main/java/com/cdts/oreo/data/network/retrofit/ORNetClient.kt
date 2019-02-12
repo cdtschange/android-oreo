@@ -60,8 +60,14 @@ object ORNetClient {
                 completion(ORNetworkStatus.Unknown)
                 return@guard
             }
-            if (!isNetworkConnected()) completion(ORNetworkStatus.NotReachable)
-            if (isWifiConnected()) completion(ORNetworkStatus.Wifi)
+            if (!isNetworkConnected()) {
+                completion(ORNetworkStatus.NotReachable)
+                return@guard
+            }
+            if (isWifiConnected()) {
+                completion(ORNetworkStatus.Wifi)
+                return@guard
+            }
             when (getNetworkClass()) {
                 TelephonyManager.NETWORK_TYPE_GPRS,
                 TelephonyManager.NETWORK_TYPE_EDGE,
@@ -69,6 +75,7 @@ object ORNetClient {
                 TelephonyManager.NETWORK_TYPE_1xRTT,
                 TelephonyManager.NETWORK_TYPE_IDEN -> {
                     completion(ORNetworkStatus.Data2G)
+                    return@guard
                 }
 
                 TelephonyManager.NETWORK_TYPE_UMTS,
@@ -81,14 +88,17 @@ object ORNetClient {
                 TelephonyManager.NETWORK_TYPE_EHRPD,
                 TelephonyManager.NETWORK_TYPE_HSPAP -> {
                     completion(ORNetworkStatus.Data3G)
+                    return@guard
                 }
 
                 TelephonyManager.NETWORK_TYPE_LTE -> {
                     completion(ORNetworkStatus.Data4G)
+                    return@guard
                 }
 
                 else -> {
                     completion(ORNetworkStatus.Unknown)
+                    return@guard
                 }
             }
         }
