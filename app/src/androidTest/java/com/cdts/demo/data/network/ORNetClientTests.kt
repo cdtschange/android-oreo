@@ -7,7 +7,7 @@ import org.junit.Test
 
 class ORNetClientTests: BaseTestCase() {
 
-    @Test
+//    @Test
     fun testNetClient() {
         ORNetClient.getNetworkStatus { status ->
             print(status.reachableCellular)

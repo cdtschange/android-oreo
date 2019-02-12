@@ -10,7 +10,7 @@ import org.junit.Test
 
 class TORNetApiOtherTests: BaseTestCase() {
 
-//    @Test
+    @Test
     fun testNetApiWithoutFill() {
 
         val apiModel = TestNetApiModel()
@@ -28,7 +28,7 @@ class TORNetApiOtherTests: BaseTestCase() {
         await()
     }
 
-//    @Test
+    @Test
     fun testRequestJsonCancel() {
 
         val apiModel = TestNetApiModel()
@@ -52,7 +52,7 @@ class TORNetApiOtherTests: BaseTestCase() {
         await()
     }
 
-//    @Test
+    @Test
     fun testRequestStringCancel() {
 
         val apiModel = TestStringNetApiModel()
@@ -76,7 +76,7 @@ class TORNetApiOtherTests: BaseTestCase() {
         await()
     }
 
-//    @Test
+    @Test
     fun testRequestDataCancel() {
 
         val apiModel = TestDataNetApiModel()
@@ -100,7 +100,7 @@ class TORNetApiOtherTests: BaseTestCase() {
         await()
     }
 
-//    @Test
+    @Test
     fun testRequestMultipartUploadError() {
 
         val apiModel = TestUploadMultipartNetApiModel()

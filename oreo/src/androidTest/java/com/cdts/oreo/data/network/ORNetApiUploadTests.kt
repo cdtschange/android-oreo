@@ -17,12 +17,12 @@ import org.junit.Test
 
 
 class ORNetApiUploadTests: BaseTestCase() {
-//    @get:Rule
+    @get:Rule
     val permissionRuleWriteExternalStorage = GrantPermissionRule.grant(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//    @get:Rule
+    @get:Rule
     val permissionRuleReadExternalStorage = GrantPermissionRule.grant(Manifest.permission.READ_EXTERNAL_STORAGE)
 
-//    @Test
+    @Test
     fun testMultipartUpload() {
         val apiModel = TestUploadMultipartNetApiModel()
         val api = TestNetApi()

@@ -15,7 +15,7 @@ import org.mockito.ArgumentMatchers.any
 
 class ORNetIndicatorClientTests: BaseTestCase() {
 
-//    @Test
+    @Test
     fun testNetIndicator() {
         val appContext: Activity = mock()
         val hud: KProgressHUD = mock()
