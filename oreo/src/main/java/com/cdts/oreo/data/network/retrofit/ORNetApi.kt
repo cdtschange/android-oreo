@@ -228,7 +228,7 @@ abstract class ORNetApi {
         return Observable.create<T> { sink ->
             var json = it as? String
             if(json == null) {
-                json = it.toString()
+                json = Gson().toJson(it)
             }
             val model = Gson().fromJson(json, api.javaClass)
             sink.onNext(model)

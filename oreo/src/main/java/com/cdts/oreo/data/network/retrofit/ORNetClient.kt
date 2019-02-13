@@ -12,10 +12,10 @@ import timber.log.Timber
 enum class ORNetworkStatus {
     Unknown, Data2G, Data3G, Data4G, Data5G, Wifi, NotReachable;
 
-    var reachableWifi: Boolean = false
+    val reachableWifi: Boolean
         get() = this == Wifi
 
-    var reachableCellular: Boolean = false
+    val reachableCellular: Boolean
         get() = this == Data2G || this == Data3G ||this == Data4G ||this == Data5G
 }
 
@@ -42,13 +42,44 @@ object ORNetClient {
     /**
      * 当前网络的连接类型
      */
-    private fun getNetworkClass(): Int? {
+    fun getNetworkClass(): Int? {
         val manager = ORApplication.application!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val netWorkInfo = manager.activeNetworkInfo
         return if (netWorkInfo != null && netWorkInfo.isAvailable && netWorkInfo.isConnected) {
             netWorkInfo.type
         } else {
             null
+        }
+    }
+    fun translateStatus(status: Int?): ORNetworkStatus {
+        when (status) {
+            TelephonyManager.NETWORK_TYPE_GPRS,
+            TelephonyManager.NETWORK_TYPE_EDGE,
+            TelephonyManager.NETWORK_TYPE_CDMA,
+            TelephonyManager.NETWORK_TYPE_1xRTT,
+            TelephonyManager.NETWORK_TYPE_IDEN -> {
+                return ORNetworkStatus.Data2G
+            }
+
+            TelephonyManager.NETWORK_TYPE_UMTS,
+            TelephonyManager.NETWORK_TYPE_EVDO_0,
+            TelephonyManager.NETWORK_TYPE_EVDO_A,
+            TelephonyManager.NETWORK_TYPE_HSDPA,
+            TelephonyManager.NETWORK_TYPE_HSUPA,
+            TelephonyManager.NETWORK_TYPE_HSPA,
+            TelephonyManager.NETWORK_TYPE_EVDO_B,
+            TelephonyManager.NETWORK_TYPE_EHRPD,
+            TelephonyManager.NETWORK_TYPE_HSPAP -> {
+                return ORNetworkStatus.Data3G
+            }
+
+            TelephonyManager.NETWORK_TYPE_LTE -> {
+                return ORNetworkStatus.Data4G
+            }
+
+            else -> {
+                return ORNetworkStatus.Unknown
+            }
         }
     }
     /**
@@ -68,39 +99,8 @@ object ORNetClient {
                 completion(ORNetworkStatus.Wifi)
                 return@guard
             }
-            when (getNetworkClass()) {
-                TelephonyManager.NETWORK_TYPE_GPRS,
-                TelephonyManager.NETWORK_TYPE_EDGE,
-                TelephonyManager.NETWORK_TYPE_CDMA,
-                TelephonyManager.NETWORK_TYPE_1xRTT,
-                TelephonyManager.NETWORK_TYPE_IDEN -> {
-                    completion(ORNetworkStatus.Data2G)
-                    return@guard
-                }
-
-                TelephonyManager.NETWORK_TYPE_UMTS,
-                TelephonyManager.NETWORK_TYPE_EVDO_0,
-                TelephonyManager.NETWORK_TYPE_EVDO_A,
-                TelephonyManager.NETWORK_TYPE_HSDPA,
-                TelephonyManager.NETWORK_TYPE_HSUPA,
-                TelephonyManager.NETWORK_TYPE_HSPA,
-                TelephonyManager.NETWORK_TYPE_EVDO_B,
-                TelephonyManager.NETWORK_TYPE_EHRPD,
-                TelephonyManager.NETWORK_TYPE_HSPAP -> {
-                    completion(ORNetworkStatus.Data3G)
-                    return@guard
-                }
-
-                TelephonyManager.NETWORK_TYPE_LTE -> {
-                    completion(ORNetworkStatus.Data4G)
-                    return@guard
-                }
-
-                else -> {
-                    completion(ORNetworkStatus.Unknown)
-                    return@guard
-                }
-            }
+            completion(translateStatus(getNetworkClass()))
+            return@guard
         }
 
     }

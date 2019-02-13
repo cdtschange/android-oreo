@@ -5,7 +5,10 @@ import com.cdts.oreo.data.network.retrofit.ORNetClient
 import org.junit.Test
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
+import android.telephony.TelephonyManager
+import com.cdts.oreo.data.network.retrofit.ORNetworkStatus
 import com.cdts.oreo.test.MainTestActivity
+import com.cdts.oreo.ui.router.ORRouter
 import org.junit.Rule
 import org.junit.runner.RunWith
 
@@ -17,6 +20,9 @@ class ORNetClientTests: BaseTestCase() {
 
     @Test
     fun testNetClient() {
+        val activity = ORRouter.topActivity() as? MainTestActivity
+        print(activity?.titleBar)
+        print(activity?.layoutResID)
         ORNetClient.getNetworkStatus { status ->
             print(status.reachableCellular)
             print(status.reachableWifi)
@@ -24,5 +30,29 @@ class ORNetClientTests: BaseTestCase() {
         }
 
         await()
+    }
+
+    @Test
+    fun testStatus() {
+        print(ORNetClient.getNetworkClass())
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_GPRS) == ORNetworkStatus.Data2G)
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_EDGE) == ORNetworkStatus.Data2G)
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_CDMA) == ORNetworkStatus.Data2G)
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_1xRTT) == ORNetworkStatus.Data2G)
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_IDEN) == ORNetworkStatus.Data2G)
+
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_UMTS) == ORNetworkStatus.Data3G)
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_EVDO_0) == ORNetworkStatus.Data3G)
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_EVDO_A) == ORNetworkStatus.Data3G)
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_HSDPA) == ORNetworkStatus.Data3G)
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_HSUPA) == ORNetworkStatus.Data3G)
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_HSPA) == ORNetworkStatus.Data3G)
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_EVDO_B) == ORNetworkStatus.Data3G)
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_EHRPD) == ORNetworkStatus.Data3G)
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_HSPAP) == ORNetworkStatus.Data3G)
+
+        assert(ORNetClient.translateStatus(TelephonyManager.NETWORK_TYPE_LTE) == ORNetworkStatus.Data4G)
+
+        assert(ORNetClient.translateStatus(null) == ORNetworkStatus.Unknown)
     }
 }

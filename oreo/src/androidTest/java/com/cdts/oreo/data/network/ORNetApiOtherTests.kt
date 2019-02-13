@@ -1,6 +1,8 @@
 package com.cdts.oreo.data.network
 
 import com.cdts.oreo.BaseTestCase
+import com.cdts.oreo.data.network.retrofit.ORNetApi
+import com.cdts.oreo.data.network.retrofit.ORNetApiModel
 import com.cdts.oreo.data.network.retrofit.ORRequestType
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -19,6 +21,52 @@ class TORNetApiOtherTests: BaseTestCase() {
         apiModel.url = "get"
         api.signal(apiModel).subscribe({
             assert(true)
+            signal()
+        }, {
+            assert(false)
+            signal()
+        })
+
+        await()
+    }
+
+    @Test
+    fun testNetApiError() {
+
+        val statusCode = ORStatusCode.BadRequest.value
+        val errorMessage = "Test Error"
+        val apiModel = TestNetApiModel()
+        val api = TestNetApi()
+        api.baseUrlString = NetApiTestConstant.urlString
+        apiModel.error = ORError(statusCode, errorMessage)
+        apiModel.url = "get"
+        api.signal(apiModel).subscribe({
+            assert(false)
+        }, { error ->
+            assert(error is ORError)
+            assert((error as ORError).statusCode == statusCode)
+            assert((error).message == errorMessage)
+        })
+    }
+
+    open class NoBaseTestNetApi: ORNetApi() {
+        override var baseUrlString: String = ""
+    }
+    open class NoBaseTestNetApiModel: ORNetApiModel()
+
+    @Test
+    fun testNetApiBase() {
+
+        val apiModel = NoBaseTestNetApiModel()
+        val api = NoBaseTestNetApi()
+        assert(api.timeoutIntervalForRead == 45L)
+        assert(api.timeoutIntervalForWrite == 45L)
+        assert(api.timeoutIntervalForConnect == 45L)
+        api.baseUrlString = NetApiTestConstant.urlString
+        apiModel.url = "get"
+        api.signal(apiModel).subscribe({
+            assert(it.error == null)
+            it.fill("a")
             signal()
         }, {
             assert(false)

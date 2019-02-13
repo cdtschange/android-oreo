@@ -76,4 +76,19 @@ class ORNetIndicatorClientTests: BaseTestCase() {
         await()
     }
 
+    @Test
+    fun testNoNetIndicator() {
+
+        val apiModel = TestNetApiModel()
+        assert(ORNetIndicatorClient.indicators.count() == 0)
+        ORNetIndicatorClient.show(apiModel)
+        ORNetIndicatorClient.hide(apiModel)
+
+        val appContext: Activity = mock()
+
+        ORNetIndicatorClient.add(apiModel, null, appContext, null)
+        ORNetIndicatorClient.show(apiModel)
+        ORNetIndicatorClient.hide(apiModel)
+        ORNetIndicatorClient.remove(apiModel)
+    }
 }
