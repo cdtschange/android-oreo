@@ -1,5 +1,6 @@
-package com.cdts.oreo
+package com.cdts.oreo.test
 
+import com.cdts.oreo.R
 import com.cdts.oreo.ui.schema.view.ORBaseActivity
 import com.cdts.oreo.ui.view.toolbar.ORToolBar
 
