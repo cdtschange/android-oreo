@@ -127,6 +127,10 @@ open class ORLruCache {
         }
     }
 
+    fun remove(key: String) {
+        cache.remove(key)
+    }
+
     private fun toInternalKey(key: String): String {
         return key.md5().toLowerCase()
     }

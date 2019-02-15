@@ -3,9 +3,11 @@
     <application
             android:name=".test.TestApplication"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity android:name=".test.MainTestActivity"></activity>
+        <activity android:name=".test.TestParamsActivity"></activity>
+        <activity android:name=".test.TestWebViewActivity"></activity>
 
     </application>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>

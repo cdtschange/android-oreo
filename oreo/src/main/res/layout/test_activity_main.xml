@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
                                              android:id="@+id/mainContainer"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
                                              android:orientation="vertical">
+
+    <fragment
+            android:id="@+id/mainFrame"
+            android:name="com.cdts.oreo.ui.view.navigation.ORTabNavHostFragment"
+            android:layout_width="match_parent"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@id/mainNav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="0dp"
+            app:navGraph="@navigation/test_nav_main"/>
+
+    <android.support.design.widget.BottomNavigationView
+            android:id="@+id/mainNav"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/test_menu_main" />
 
 </android.support.constraint.ConstraintLayout>

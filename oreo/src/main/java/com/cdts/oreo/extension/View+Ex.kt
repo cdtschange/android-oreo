@@ -7,6 +7,7 @@ import android.content.ContextWrapper
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.jakewharton.rxbinding2.view.RxView
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 
@@ -18,22 +19,28 @@ fun View.addClickAction(action: (view: View) -> Unit) {
     imm.hideSoftInputFromWindow(this.windowToken, 0)
     RxView.clicks(this)
             .throttleFirst(1, TimeUnit.SECONDS)
-            .subscribe { action(this) }
+            .subscribe({
+                action(this)
+            }, {
+                Timber.e(it)
+            })
 }
 
-fun View.getActivity(): Activity {
+fun View.getActivity(): Activity? {
     val context = this.context
     try {
         var baseContext = context as ContextWrapper
         while (baseContext !is Activity) {
             val contextWrapper = baseContext.baseContext as ContextWrapper
             if (contextWrapper === baseContext) {
-                throw RuntimeException("Context 转Activity 异常")
+                Timber.e("Context 转Activity 异常")
+                return null
             }
             baseContext = contextWrapper
         }
         return baseContext
     } catch (throwable: Throwable) {
-        throw RuntimeException("Context 转Activity 异常")
+        Timber.e("Context 转Activity 异常")
+        return null
     }
 }

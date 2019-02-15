@@ -1,6 +1,9 @@
 package com.cdts.oreo.data.local
 
 import android.arch.lifecycle.MutableLiveData
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -36,8 +39,10 @@ class ORCacheLiveData<T>(private val cacheName: String): MutableLiveData<T>() {
      * value must be nullable
      */
     override fun setValue(value: T?) {
-        ORLruCache.getCache(ORLruCache.CacheType.Cache).put(cacheName, value)
-        super.setValue(value)
+        GlobalScope.launch(Dispatchers.Main) {
+            ORLruCache.getCache(ORLruCache.CacheType.Cache).put(cacheName, value)
+            super.setValue(value)
+        }
     }
 
     override fun getValue(): T? {
@@ -54,8 +59,10 @@ class ORDiskCacheLiveData<T>(private val cacheName: String): MutableLiveData<T>(
      * value must be nullable
      */
     override fun setValue(value: T?) {
-        ORLruCache.getCache(ORLruCache.CacheType.Disk).put(cacheName, value)
-        super.setValue(value)
+        GlobalScope.launch(Dispatchers.Main) {
+            ORLruCache.getCache(ORLruCache.CacheType.Disk).put(cacheName, value)
+            super.setValue(value)
+        }
     }
 
     override fun getValue(): T? {

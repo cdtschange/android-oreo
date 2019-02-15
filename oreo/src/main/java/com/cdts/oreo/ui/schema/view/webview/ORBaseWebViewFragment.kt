@@ -11,8 +11,8 @@ import com.cdts.oreo.ui.schema.view.ORBaseFragment
 
 abstract class ORBaseWebViewFragment: ORBaseFragment(), ORWebKit {
 
-    @JvmField var url: String? = null
-    @JvmField var htmlData: String? = null
+    var url: String? = null
+    var htmlData: String? = null
 
     override var webViewClient: WebViewClient? = null
     override var progressBarEnable: Boolean = true

@@ -2,25 +2,33 @@ package com.cdts.oreo.data.local
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.navigation.NavDestination
 import com.cdts.oreo.ui.application.ORApplication
 
 object ORSharedPreferences {
 
-    private val preferences: SharedPreferences by lazy {
+    val preferences: SharedPreferences by lazy {
         val context = ORApplication.application!!
         context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
     }
 
     @Suppress("UNCHECKED_CAST")
-    fun<T> get(key: String, def: T): T? {
-        return when(def) {
-            is String -> preferences.getString(key, def) as? T
-            is Int -> preferences.getInt(key, def) as? T
-            is Boolean -> preferences.getBoolean(key, def) as? T
-            is Long -> preferences.getLong(key, def) as? T
-            is Float -> preferences.getFloat(key, def) as? T
+    fun<T> get(key: String, type: Class<T>): T? {
+        if (!preferences.contains(key)) {
+            return null
+        }
+        return when(type::class) {
+            String::class -> preferences.getString(key, "") as? T
+            Int::class -> preferences.getInt(key, 0) as? T
+            Boolean::class -> preferences.getBoolean(key, false) as? T
+            Long::class -> preferences.getLong(key, 0L) as? T
+            Float::class -> preferences.getFloat(key, 0.0f) as? T
             else -> null
         }
+    }
+
+    fun contains(key: String): Boolean {
+        return preferences.contains(key)
     }
 
     fun<T> put(key: String, value: T) {

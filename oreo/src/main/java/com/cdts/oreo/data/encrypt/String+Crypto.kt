@@ -3,6 +3,8 @@ package com.cdts.oreo.data.encrypt
 import com.blankj.utilcode.util.EncodeUtils
 import com.blankj.utilcode.util.EncryptUtils
 
+
+
 fun String.md5(): String {
     return EncryptUtils.encryptMD5ToString(this)
 }
@@ -21,18 +23,16 @@ fun String.sha384(): String {
 fun String.sha512(): String {
     return EncryptUtils.encryptSHA512ToString(this)
 }
-fun String.aesEncrypt(key: String, iv: String, padding: String = "PKCS7Padding"): String {
-    return String(EncryptUtils.encryptAES(this.toByteArray(), key.toByteArray(), padding, iv.toByteArray())).base64Encode()
+fun String.aesEncrypt(key: String, iv: String?, padding: String = "AES/CFB/PKCS7Padding"): ByteArray? {
+    return EncryptUtils.encryptAES(this.toByteArray(Charsets.UTF_8), key.toByteArray(Charsets.UTF_8), padding, iv?.toByteArray(Charsets.UTF_8)) ?: return null
 }
-fun String.aesDecrypt(key: String, iv: String, padding: String = "PKCS7Padding"): String {
-    return String(EncryptUtils.decryptAES(this.toByteArray(), key.toByteArray(), padding, iv.toByteArray())).base64Encode()
+fun ByteArray.aesDecrypt(key: String, iv: String?, padding: String = "AES/CFB/PKCS7Padding"): String? {
+    val bytes = EncryptUtils.decryptAES(this, key.toByteArray(Charsets.UTF_8), padding, iv?.toByteArray(Charsets.UTF_8)) ?: return null
+    return String(bytes, Charsets.UTF_8)
 }
 
 fun String.urlEncode(): String {
     return EncodeUtils.urlEncode(this)
-        .replace("&", "%26")
-        .replace("+", "%2B")
-        .replace("=", "%3D")
 }
 fun String.urlDecode(): String {
     return EncodeUtils.urlDecode(this)

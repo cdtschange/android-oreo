@@ -6,10 +6,10 @@ import io.reactivex.Observable
 
 
 object ORValidator {
-    data class V(val expression: Boolean, val message: String)
+    data class V2(val expression: Boolean, val message: String)
     data class V3(val expression: Boolean, val code: Int, val message: String)
 
-    fun validate(conditions: Array<V>): Observable<Unit> {
+    fun validate(conditions: Array<V2>): Observable<Unit> {
         val cond = conditions.map { V3(it.expression, ORStatusCode.ValidateFailed.value, it.message) }.toTypedArray()
         return validate(cond)
     }

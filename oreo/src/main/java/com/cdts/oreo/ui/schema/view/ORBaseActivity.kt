@@ -53,19 +53,24 @@ abstract class ORBaseActivity: AppCompatActivity(), ORRouterProtocol {
         lifecycle.addObserver(lifecycleObserver)
         val bundle = intent.extras
         setParamsFromBundle(bundle)
-        var binding: ViewDataBinding? = null
-        if (layoutResID != 0) {
-            try {
-                binding = DataBindingUtil.setContentView(this, layoutResID)
-                binding?.setLifecycleOwner(this)
-            }catch (e: Exception){
-                setContentView(layoutResID)
-            }
-        }
+        val binding = getBinding()
         setupDagger()
         setupBinding(binding)
         setupNavigation()
         setupUI()
+    }
+
+    open fun getBinding(): ViewDataBinding? {
+        var binding: ViewDataBinding? = null
+        if (layoutResID != 0) {
+            try {
+                binding = DataBindingUtil.setContentView(this, layoutResID)
+                binding?.lifecycleOwner = this
+            } catch (e: Exception){
+                setContentView(layoutResID)
+            }
+        }
+        return binding
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -121,9 +126,7 @@ abstract class ORBaseActivity: AppCompatActivity(), ORRouterProtocol {
                         when (type) {
                             "java.lang.String" -> property.set(this, value)
                             "java.lang.Integer" -> property.set(this, Integer.parseInt(value.toString()))
-                            "int" -> property.setInt(this, Integer.parseInt(value.toString()))
                             "java.lang.Boolean" -> property.set(this, java.lang.Boolean.parseBoolean(value.toString()))
-                            "boolean" -> property.setBoolean(this, java.lang.Boolean.parseBoolean(value.toString()))
                             "java.util.List" -> property.set(this, value)
                             else -> property.set(this, value)
                         }
