@@ -27,7 +27,7 @@ object ORPhotoActionSheet {
     private const val REQUEST_CODE_CAMERA = 0xa1
     private const val REQUEST_CODE_FILE = 0xa2
 
-    fun showPhoto(activity: Activity, completion: (success: Boolean, uri: Uri?, error: ORError?) -> Unit) {
+    fun showPhoto(activity: Activity, completion: (success: Boolean, uri: Uri?, error: ORError?) -> Unit): ActionSheetDialog {
 
         val items = arrayOf("Camera", "Image Library")
         val dialog = ActionSheetDialog(ORRouter.topActivity(), items, null)
@@ -47,6 +47,7 @@ object ORPhotoActionSheet {
             }
             dialog.dismiss()
         }
+        return dialog
     }
 
     fun showCamera(activity: Activity, completion: (success: Boolean, uri: Uri?, error: ORError?) -> Unit) {

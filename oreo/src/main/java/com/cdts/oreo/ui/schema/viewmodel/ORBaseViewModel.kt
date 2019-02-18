@@ -11,23 +11,6 @@ import io.reactivex.Observable
 open class ORBaseViewModel: ViewModel() {
 
     companion object {
-
-        @Suppress("UNCHECKED_CAST")
-        inline fun<reified V: ViewModel, R> createViewModel(activity: FragmentActivity, repository: R, crossinline factory: (R) -> V): V {
-            return ViewModelProviders.of(activity, object: ViewModelProvider.Factory {
-                override fun <T: ViewModel?> create(modelClass: Class<T>): T {
-                    return factory(repository) as T
-                }
-            }).get(V::class.java)
-        }
-        @Suppress("UNCHECKED_CAST")
-        inline fun<reified V: ViewModel, R> createViewModel(fragment: Fragment, repository: R, crossinline factory: (R) -> V): V {
-            return ViewModelProviders.of(fragment, object: ViewModelProvider.Factory {
-                override fun <T: ViewModel?> create(modelClass: Class<T>): T {
-                    return factory(repository) as T
-                }
-            }).get(V::class.java)
-        }
         @Suppress("UNCHECKED_CAST")
         inline fun<reified V: ViewModel> createViewModel(activity: FragmentActivity, crossinline factory: () -> V): V {
             return ViewModelProviders.of(activity, object: ViewModelProvider.Factory {

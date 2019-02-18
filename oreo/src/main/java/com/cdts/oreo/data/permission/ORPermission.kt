@@ -19,14 +19,18 @@ object ORPermission {
         val rxPermissions = RxPermissions(ORRouter.topActivity())
         if (Looper.getMainLooper() != Looper.myLooper()) {
             ORRouter.topActivity().runOnUiThread {
-                rxPermissions.request(*perms).subscribe { granted ->
+                rxPermissions.request(*perms).subscribe ({ granted ->
                     complete(granted)
-                }
+                }, {
+                    complete(false)
+                })
             }
         } else {
-            rxPermissions.request(*perms).subscribe { granted ->
+            rxPermissions.request(*perms).subscribe ({ granted ->
                 complete(granted)
-            }
+            }, {
+                complete(false)
+            })
         }
     }
 }
