@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.doraemon.compiler.plugin'
 
 android {
     compileSdkVersion rootProject.compile_sdk_version
@@ -66,5 +67,7 @@ dependencies {
     implementation "com.umeng.umsdk:common:$rootProject.umsdk_common_version"
 
     implementation "com.kaopiz:kprogresshud:$rootProject.kprogresshud_version"
+    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:$rootProject.doraemon_version"
+    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:$rootProject.doraemon_version"
 
 }

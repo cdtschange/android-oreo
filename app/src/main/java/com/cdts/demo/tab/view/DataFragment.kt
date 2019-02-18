@@ -1,4 +1,4 @@
-package com.cdts.demo.ui.tab.view
+package com.cdts.demo.tab.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +9,13 @@ import android.widget.TextView
 import com.cdts.demo.R
 import com.cdts.demo.dagger.activity.DaggerFragmentComponent
 import com.cdts.demo.dagger.activity.module.FragmentModule
+import com.cdts.demo.router.routeToUrl
 import com.cdts.demo.schema.view.BaseListFragment
 import com.cdts.demo.ui.application.MyApplication
-import com.cdts.demo.ui.tab.repository.MenuModel
-import com.cdts.demo.ui.tab.repository.MenuType
-import com.cdts.demo.ui.tab.viewmodel.MenuListViewModel
+import com.cdts.demo.tab.repository.MenuModel
+import com.cdts.demo.tab.repository.MenuType
+import com.cdts.demo.tab.viewmodel.MenuListViewModel
+import com.cdts.oreo.ui.router.ORRouter
 import com.cdts.oreo.ui.schema.view.ORBaseListFragment
 import com.cdts.oreo.ui.schema.viewmodel.ORBaseViewModel
 import kotlinx.android.synthetic.main.fragment_list_with_toolbar.*
@@ -76,15 +78,20 @@ class DataFragment : BaseListFragment() {
         }
         viewHolder.lblTitle.text = data.title
         viewHolder.lblDetail.text = data.detail
+        if (data.detail.isEmpty()) {
+            viewHolder.lblDetail.visibility = View.GONE
+        } else {
+            viewHolder.lblDetail.visibility = View.VISIBLE
+        }
         return v
     }
 
     override fun itemClickEvent(listView: ListView, view: View, position: Int, id: Long) {
         val data = getItem(position) as MenuModel
         if (data.url.startsWith("http")) {
-//            ORRouter.routeToUrl(data.url)
+            ORRouter.routeToUrl(data.url)
         } else {
-//            ORRouter.routeToName(data.url)
+            ORRouter.routeToName(data.url, data.params)
         }
     }
 

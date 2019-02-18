@@ -15,7 +15,7 @@ open class ORBaseListViewModel: ORBaseViewModel() {
     open var listMaxNumber= Int.MAX_VALUE
     val dataArray: MutableLiveData<MutableList<Any>> = MutableLiveData()
 
-    fun updateData(collection: Collection<Any>) {
+    fun appendDataArray(collection: Collection<Any>) {
         synchronized(mLock) {
             val temp = dataArray.value ?: mutableListOf()
             if (dataIndex == 0) {
@@ -27,7 +27,7 @@ open class ORBaseListViewModel: ORBaseViewModel() {
         notifyDataSetChanged()
     }
 
-    var canLoadMoreData: Boolean = true
+    val canLoadMoreData: Boolean
         get() = (dataArray.value?.size ?: 0) % listLoadNumber == 0
                 && (dataArray.value?.size ?: 0) < listMaxNumber
 

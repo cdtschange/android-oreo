@@ -1,4 +1,4 @@
-package com.cdts.demo.ui.tab.view
+package com.cdts.demo.tab.view
 
 import com.cdts.demo.R
 import com.cdts.demo.schema.view.BaseFragment

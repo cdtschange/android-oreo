@@ -2,7 +2,8 @@ package com.cdts.demo.dagger.activity.module
 
 import android.arch.lifecycle.ViewModel
 import com.cdts.demo.dagger.activity.ActivityScope
-import com.cdts.demo.ui.tab.repository.MenuListRepository
+import com.cdts.demo.tab.repository.MenuListRepository
+import com.cdts.demo.ui.listview.repository.ListTypeRepository
 import dagger.Module
 import dagger.Provides
 
@@ -21,4 +22,12 @@ class ViewModelModule(private val viewModel: ViewModel) {
     internal fun provideMenuListRepository(): MenuListRepository {
         return MenuListRepository()
     }
+
+    @Provides
+    @ActivityScope
+    internal fun provideListTypeRepository(): ListTypeRepository {
+        return ListTypeRepository()
+    }
+
+
 }

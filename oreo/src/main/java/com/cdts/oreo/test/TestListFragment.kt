@@ -76,7 +76,7 @@ class TestListViewModel: ORBaseListViewModel() {
 
     override fun fetchData(): Observable<Any> {
         return Observable.just((repository as TestListRepository).fetchItems(dataIndex, listLoadNumber)).map { data ->
-            updateData(data)
+            appendDataArray(data)
             data
         }
     }

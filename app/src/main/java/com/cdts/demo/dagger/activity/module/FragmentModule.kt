@@ -2,8 +2,8 @@ package com.cdts.demo.dagger.activity.module
 
 import android.support.v4.app.Fragment
 import com.cdts.demo.dagger.activity.ActivityScope
-import com.cdts.demo.ui.tab.repository.MenuListRepository
-import com.cdts.demo.ui.tab.viewmodel.MenuListViewModel
+import com.cdts.demo.tab.viewmodel.MenuListViewModel
+import com.cdts.demo.ui.listview.viewmodel.ListTypeViewModel
 import com.cdts.oreo.ui.schema.viewmodel.ORBaseViewModel
 import com.cdts.oreo.ui.view.indicator.ORIndicator
 import com.cdts.oreo.ui.view.indicator.ORIndicatorProtocol
@@ -31,6 +31,13 @@ class FragmentModule(private val fragment: Fragment) {
     @Suppress("UNCHECKED_CAST")
     internal fun provideMenuListViewModel(): MenuListViewModel {
         return ORBaseViewModel.createViewModel(fragment) { MenuListViewModel() }
+    }
+
+    @Provides
+    @ActivityScope
+    @Suppress("UNCHECKED_CAST")
+    internal fun provideListTypeViewModel(): ListTypeViewModel {
+        return ORBaseViewModel.createViewModel(fragment) { ListTypeViewModel() }
     }
 //
 //    @Provides

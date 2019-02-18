@@ -1,22 +1,17 @@
-package com.cdts.demo.ui.tab.viewmodel
+package com.cdts.demo.ui.listview.viewmodel
 
 import com.cdts.demo.dagger.activity.DaggerViewModelComponent
 import com.cdts.demo.dagger.activity.module.ViewModelModule
 import com.cdts.demo.schema.viewmodel.BaseListViewModel
 import com.cdts.demo.ui.application.MyApplication
-import com.cdts.demo.ui.tab.repository.MenuListRepository
-import com.cdts.demo.ui.tab.repository.MenuType
+import com.cdts.demo.ui.listview.repository.ListTypeRepository
 import com.cdts.oreo.ui.schema.repository.ORBaseRepository
 import io.reactivex.Observable
 import javax.inject.Inject
 
-
-class MenuListViewModel: BaseListViewModel() {
-
-    var type: MenuType = MenuType.None
-
+class ListTypeViewModel: BaseListViewModel() {
     @Inject
-    lateinit var mRepository: MenuListRepository
+    lateinit var mRepository: ListTypeRepository
     override var repository: ORBaseRepository = mRepository
 
     override fun setupDagger() {
@@ -30,8 +25,8 @@ class MenuListViewModel: BaseListViewModel() {
     }
 
     override fun fetchData(): Observable<Any> {
-        return Observable.just(mRepository.fetchMenuItems(type)).map { data ->
-            updateData(data)
+        return mRepository.fetchData(dataIndex * listLoadNumber, listLoadNumber).map { data ->
+            appendDataArray(data)
             data
         }
     }

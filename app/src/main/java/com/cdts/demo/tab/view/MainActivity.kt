@@ -1,4 +1,4 @@
-package com.cdts.demo.ui.tab.view
+package com.cdts.demo.tab.view
 
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI

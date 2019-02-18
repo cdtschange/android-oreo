@@ -11,13 +11,16 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:node="replace" >
-        <activity android:name=".ui.tab.view.MainActivity" >
+        <activity android:name="com.cdts.demo.tab.view.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".schema.view.webview.BaseWebViewActivity" />
+        <activity android:name=".tab.view.MenuListViewActivity" />
+        <activity android:name=".ui.listview.view.ListTypeActivity" />
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
