@@ -18,9 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".schema.view.webview.BaseWebViewActivity" />
-        <activity android:name=".tab.view.MenuListViewActivity" />
-        <activity android:name=".ui.listview.view.ListTypeActivity" />
+        <activity android:name=".schema.view.webview.BaseWebViewActivity" android:theme="@style/AppTheme" />
+        <activity android:name=".tab.view.MenuListViewActivity" android:theme="@style/AppTheme" />
+        <activity android:name=".ui.listview.view.ListTypeActivity" android:theme="@style/AppTheme" />
+        <activity android:name=".ui.webview.view.SimpleWebViewActivity" android:theme="@style/AppTheme" />
+        <activity android:name=".ui.webview.view.WebBridgeViewActivity" android:theme="@style/AppTheme" />
+
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>

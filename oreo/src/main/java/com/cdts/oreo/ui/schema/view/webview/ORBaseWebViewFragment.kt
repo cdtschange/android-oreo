@@ -16,6 +16,7 @@ abstract class ORBaseWebViewFragment: ORBaseFragment(), ORWebKit {
 
     override var webViewClient: WebViewClient? = null
     override var progressBarEnable: Boolean = true
+    var refreshHeaderEnable: Boolean = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

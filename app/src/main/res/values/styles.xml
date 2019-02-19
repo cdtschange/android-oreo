@@ -11,6 +11,8 @@
         <!--控制各个控件被选中时的颜色-->
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:screenOrientation">portrait</item>
+
+        <item name="android:windowAnimationStyle">@style/ActivityOutInAnimation</item>
     </style>
 
     <!--横线-->
@@ -18,5 +20,16 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0.5dp</item>
         <item name="android:background">@color/colorLightWhite</item>
+    </style>
+
+    <style name="ActivityOutInAnimation">
+        <!--新Activity进入动画-->
+        <item name="android:activityOpenEnterAnimation">@anim/trans_left_in</item>
+        <!--旧Activity退出动画-->
+        <item name="android:activityOpenExitAnimation">@anim/trans_left_out</item>
+        <!--旧Activity进入动画-->
+        <item name="android:activityCloseEnterAnimation">@anim/trans_right_in</item>
+        <!--新Activity退出动画-->
+        <item name="android:activityCloseExitAnimation">@anim/trans_right_out</item>
     </style>
 </resources>

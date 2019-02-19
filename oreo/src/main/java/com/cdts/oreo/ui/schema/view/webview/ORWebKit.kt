@@ -37,7 +37,6 @@ interface ORWebKit: ORWebViewClientDelegate {
     var progressBarColor: Int
 
 
-
     @SuppressLint("SetJavaScriptEnabled")
     fun settingWebView() {
         if (webViewClient == null) {
@@ -85,24 +84,21 @@ interface ORWebKit: ORWebViewClientDelegate {
                 }
             }
 
-            fun openFileChooser(callback: ValueCallback<Uri>, AcceptType: String, capture: String) {
-                this.openFileChooser(callback)
-            }
-
-            fun openFileChooser(callback: ValueCallback<Uri>, AcceptType: String) {
-                this.openFileChooser(callback)
-            }
-
-            fun openFileChooser(callback: ValueCallback<Uri>) {
+            override fun onShowFileChooser(
+                webView: WebView?,
+                filePathCallback: ValueCallback<Array<Uri>>?,
+                fileChooserParams: FileChooserParams?
+            ): Boolean {
                 ORRouter.topActivity().let { activity ->
                     ORPhotoActionSheet.showFile(activity) { success, uri, error ->
                         if (success) {
-                            callback.onReceiveValue(uri)
+                            filePathCallback?.onReceiveValue(arrayOf(uri!!))
                         } else {
                             Timber.e(error)
                         }
                     }
                 }
+                return true
             }
         }
 
@@ -210,11 +206,12 @@ interface ORWebKit: ORWebViewClientDelegate {
     override fun webViewShouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
         Timber.i("webViewShouldOverrideUrlLoading: $url")
         if (url?.isNormalUrl() == true) return false
-        return shouldRouteOutside(view, url)
+        shouldRouteOutside(view, url)
+        return true
     }
 
     fun webViewRefreshData() {
-        if (webView.title?.contains("http") == false && webView.title?.contains("html") == false && webView.title.isNotEmpty()) {
+        if (webView.title?.contains("http") == false && webView.title?.contains("raw") == false && webView.title.isNotEmpty()) {
             webViewTitle = webView.title
         }
     }
@@ -293,10 +290,10 @@ open class ORWebViewClient(private val delegate: WeakReference<ORWebViewClientDe
 
     @Suppress("OverridingDeprecatedMember", "DEPRECATION")
     override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-        delegate.get()?.let {
-            return it.webViewShouldOverrideUrlLoading(view, url)
+        if(super.shouldOverrideUrlLoading(view, url)) {
+            return true
         }
-        return super.shouldOverrideUrlLoading(view, url)
+        return delegate.get()?.webViewShouldOverrideUrlLoading(view, url) ?: return true
     }
 }
 

@@ -16,24 +16,41 @@
             app:layout_constraintTop_toTopOf="parent"
             />
 
-        <com.github.lzyzsd.jsbridge.BridgeWebView
-            android:id="@+id/webView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/toolbarBottom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/demoToolBar" />
+        <!--<in.srain.cube.views.ptr.PtrClassicFrameLayout-->
+                <!--android:id="@+id/listViewContainer"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--app:ptr_duration_to_close_either="1000"-->
+                <!--app:ptr_keep_header_when_refresh="true"-->
+                <!--app:ptr_pull_to_fresh="false"-->
+                <!--app:ptr_ratio_of_header_height_to_refresh="1.2"-->
+                <!--app:ptr_resistance="1.7"-->
+                <!--app:layout_constraintBottom_toTopOf="@+id/toolbarBottom"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/demoToolBar">-->
+
+            <com.github.lzyzsd.jsbridge.BridgeWebView
+                    android:id="@+id/webView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toTopOf="@+id/toolbarBottom"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/demoToolBar"
+        />
+
+        <!--</in.srain.cube.views.ptr.PtrClassicFrameLayout>-->
+
 
         <include
-            android:id="@+id/toolbarBottom"
-            layout="@layout/toolbar_webview_bottom"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
+                android:id="@+id/toolbarBottom"
+                layout="@layout/toolbar_webview_bottom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </layout>

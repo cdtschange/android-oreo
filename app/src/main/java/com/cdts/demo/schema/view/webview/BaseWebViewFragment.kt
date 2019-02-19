@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.toolbar_webview_bottom.*
 import timber.log.Timber
 import javax.inject.Inject
 
-class BaseWebViewFragment: ORBaseWebViewFragment() {
+open class BaseWebViewFragment: ORBaseWebViewFragment() {
     override var layoutResID: Int = R.layout.fragment_webview
 
     override var titleBar: ORToolBar? = null
@@ -53,8 +53,8 @@ class BaseWebViewFragment: ORBaseWebViewFragment() {
         }
     }
 
-    override fun setupUI() {
-        super.setupUI()
+    override fun setupNavigation() {
+        super.setupNavigation()
 
         demoToolBar?.centerText = webViewTitle ?: ""
     }

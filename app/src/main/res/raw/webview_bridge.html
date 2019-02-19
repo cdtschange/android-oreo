@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+        <title>
+            WebView Bridge
+        </title>
+    </head>
+    
+    <body>
+        <p>
+            <xmp id="show">
+            </xmp>
+        </p>
+        <p>
+            <xmp id="init">
+            </xmp>
+        </p>
+        <p>
+        <input type="button" id="enter1" value="JS Call Native" onclick="jsCallNative();" />
+        </p>
+        <p>
+            <input type="button" id="enter2" value="Choose Picture" onclick="choosePhoto();" />
+        </p>
+        <p>
+            <input type="file" value="Open File" />
+        </p>
+        <p>
+            <input type="button" id="enter3" value="Tip" onclick="showTip();" />
+        </p>
+        <p>
+            <input type="button" id="enter4" value="Back" onclick="routeBack();" />
+        </p>
+    </body>
+    <script>
+        function jsCallNative() {
+            //call native method
+            window.WebViewJavascriptBridge.callHandler('jsCallNative',
+                                                       {'name': 'I am JS'},
+                                                       function(responseData) {
+                                                            document.getElementById("show").innerHTML = "Received callback data = " + responseData
+                                                       });
+        }
+        function choosePhoto() {
+            //call native method
+            window.WebViewJavascriptBridge.callHandler('choosePhoto',
+                                                       {},
+                                                       function(responseData) {
+                                                            document.getElementById("show").innerHTML = "Received callback data = " + responseData
+                                                       });
+        }
+        function showTip() {
+            //call native method
+            window.WebViewJavascriptBridge.callHandler('showTip',
+                                                       {'content': 'This is a tip'},
+                                                       function(responseData) {});
+        }
+        function routeBack() {
+            //call native method
+            window.WebViewJavascriptBridge.callHandler('routeBack',
+                                                       {},
+                                                       function(responseData) {});
+        }
+        function bridgeLog(logContent) {
+            document.getElementById("show").innerHTML = logContent;
+        }
+        function setupWebViewJavascriptBridge(callback) {
+            if (window.WebViewJavascriptBridge) {
+                callback(WebViewJavascriptBridge)
+            } else {
+                document.addEventListener(
+                        'WebViewJavascriptBridgeReady',
+                        function() {
+                            callback(WebViewJavascriptBridge)
+                        },
+                        false
+                    );
+            }
+        }
+        setupWebViewJavascriptBridge(function(bridge) {
+                                       bridge.init(
+                                                   function(message, responseCallback) {
+                                                       console.log('JS got a message', message);
+                                                       var data = {
+                                                            'JS Responds': '测试中文!'
+                                                       };
+                                                       if (responseCallback) {
+                                                            console.log('JS responding with', data);
+                                                            responseCallback(data);
+                                                       }
+                                                   });
+                                       bridge.registerHandler("nativeCallJS",
+                                                              function(data, responseCallback) {
+                                                                    document.getElementById("show").innerHTML = ("Received invoke from native: " + data);
+                                                                    if (responseCallback) {
+                                                                        var responseData = "Web: Hi";
+                                                                        responseCallback(responseData);
+                                                                    }
+                                                              });
+                                       })
+    </script>
+</html>
+
+

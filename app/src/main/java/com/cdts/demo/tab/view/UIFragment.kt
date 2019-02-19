@@ -84,6 +84,10 @@ class UIFragment : BaseListFragment() {
 
     override fun itemClickEvent(listView: ListView, view: View, position: Int, id: Long) {
         val data = getItem(position) as MenuModel
+        if (data.callback != null) {
+            data.callback.invoke()
+            return
+        }
         if (data.url.startsWith("http")) {
             ORRouter.routeToUrl(data.url)
         } else {

@@ -1,8 +1,12 @@
 package com.cdts.demo.tab.repository
 
+import com.cdts.demo.router.routeToUrl
 import com.cdts.demo.schema.repository.BaseRepository
 import com.cdts.demo.tab.view.MenuListViewActivity
 import com.cdts.demo.ui.listview.view.ListTypeActivity
+import com.cdts.demo.ui.webview.view.SimpleWebViewActivity
+import com.cdts.demo.ui.webview.view.WebBridgeViewActivity
+import com.cdts.oreo.ui.router.ORRouter
 import com.cdts.oreo.ui.schema.view.ORBaseListFragment
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -42,6 +46,19 @@ class MenuListRepository @Inject constructor(): BaseRepository() {
                     mapOf("type" to ORBaseListFragment.ListViewType.LoadMoreOnly.name, "title" to "Load More Only List View"), null))
                 data.add(MenuModel("Refersh & Load More List View", "List View with both refresh header and load more footer", ListTypeActivity::class.java.name,
                     mapOf("type" to ORBaseListFragment.ListViewType.Both.name, "title" to "Refersh & Load More List View"), null))
+                return Observable.just(data)
+            }
+            MenuType.WebView -> {
+                val data = mutableListOf<MenuModel>()
+                data.add(MenuModel("Normal Web View Activity", "Visit a website with a BaseWebViewActivity", "", mapOf()) {
+                    ORRouter.routeToUrl("https://www.baidu.com")
+                })
+                data.add(MenuModel("Web View Load From Html data", "Load Html data in WebViewActivity", "", mapOf()) {
+                    ORRouter.routeToUrl(SimpleWebViewActivity::class.java.name, "")
+                })
+                data.add(MenuModel("Web View For Bridge", "Custom Bridge for navtive & js call each other", "", mapOf()) {
+                    ORRouter.routeToUrl(WebBridgeViewActivity::class.java.name, "")
+                })
                 return Observable.just(data)
             }
             else -> return Observable.just(listOf())

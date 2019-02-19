@@ -90,9 +90,9 @@ class ORRouterTests: BaseTestCase() {
 
             assert(ORRouter.routeBack())
             delay(1000)
-            assert(ORRouter.routeToHtmlData("com.cdts.oreo.test.TestWebViewActivity", "<html>\n" +
+            assert(ORRouter.routeToHtmlData("com.cdts.oreo.test.TestWebViewActivity", "<raw>\n" +
                     "    <head>\n" +
-                    "        <meta content=\"text/html; charset=utf-8\" http-equiv=\"content-type\"/>\n" +
+                    "        <meta content=\"text/raw; charset=utf-8\" http-equiv=\"content-type\"/>\n" +
                     "        <title>\n" +
                     "            Simple Html\n" +
                     "        </title>\n" +
@@ -100,7 +100,7 @@ class ORRouterTests: BaseTestCase() {
                     "    <body>\n" +
                     "        <h1>Hello World!</h1>\n" +
                     "    </body>\n" +
-                    "</html>"))
+                    "</raw>"))
             delay(2000)
             assert(ORRouter.routeBack())
             delay(1000)

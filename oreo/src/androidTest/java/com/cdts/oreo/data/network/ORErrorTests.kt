@@ -17,7 +17,7 @@ class ORErrorTests: BaseTestCase() {
         assert(error.toString().contains("statusCode"))
         assert(error.toString().contains("message"))
 
-        val httpMessage = "<html>"
+        val httpMessage = "<raw>"
         val httpError = ORError(code, httpMessage)
         assert(httpError.statusCode == code)
         assert(httpError.originalMessage == httpMessage)

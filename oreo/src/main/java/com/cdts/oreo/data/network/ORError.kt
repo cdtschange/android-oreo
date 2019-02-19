@@ -24,7 +24,7 @@ class ORError(statusCode: Int, message: String) : Exception() {
         this.statusCode = statusCode
         this.message = message
         this.originalMessage = message
-        if (message.isEmpty() || message.contains("<html")) {
+        if (message.isEmpty() || message.contains("<raw")) {
             this.message = defaultMessage
         }
     }
