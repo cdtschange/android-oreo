@@ -5,6 +5,9 @@ import android.os.Environment
 import android.support.test.InstrumentationRegistry
 import android.support.test.rule.GrantPermissionRule
 import com.cdts.oreo.BaseTestCase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.junit.Rule
 import org.junit.Test
 
@@ -98,27 +101,59 @@ class ORLruCacheDelegateTests: BaseTestCase() {
     @Test
     fun testCacheLiveData() {
         assert(TestDiskCacheLiveDataModel.name.value == null)
-        TestDiskCacheLiveDataModel.name.value = "abc"
+        GlobalScope.launch(Dispatchers.Main) {
+            TestDiskCacheLiveDataModel.name.value = "abc"
+            signal()
+        }
+        await()
         assert(TestDiskCacheLiveDataModel.name.value == "abc")
-        TestDiskCacheLiveDataModel.name.value = null
+        GlobalScope.launch(Dispatchers.Main) {
+            TestDiskCacheLiveDataModel.name.value = null
+            signal()
+        }
+        await()
         assert(TestDiskCacheLiveDataModel.name.value == null)
 
         assert(TestDiskCacheLiveDataModel.sex.value == null)
-        TestDiskCacheLiveDataModel.sex.value = true
+        GlobalScope.launch(Dispatchers.Main) {
+            TestDiskCacheLiveDataModel.sex.value = true
+            signal()
+        }
+        await()
         assert(TestDiskCacheLiveDataModel.sex.value == true)
-        TestDiskCacheLiveDataModel.sex.value = null
+        GlobalScope.launch(Dispatchers.Main) {
+            TestDiskCacheLiveDataModel.sex.value = null
+            signal()
+        }
+        await()
         assert(TestDiskCacheLiveDataModel.sex.value == null)
 
         assert(TestDiskCacheLiveDataModel.age.value == null)
-        TestDiskCacheLiveDataModel.age.value = 123
+        GlobalScope.launch(Dispatchers.Main) {
+            TestDiskCacheLiveDataModel.age.value = 123
+            signal()
+        }
+        await()
         assert(TestDiskCacheLiveDataModel.age.value == 123)
-        TestDiskCacheLiveDataModel.age.value = null
+        GlobalScope.launch(Dispatchers.Main) {
+            TestDiskCacheLiveDataModel.age.value = null
+            signal()
+        }
+        await()
         assert(TestDiskCacheLiveDataModel.age.value == null)
 
         assert(TestDiskCacheLiveDataModel.money.value == null)
-        TestDiskCacheLiveDataModel.money.value = 1.2
+        GlobalScope.launch(Dispatchers.Main) {
+            TestDiskCacheLiveDataModel.money.value = 1.2
+            signal()
+        }
+        await()
         assert(TestDiskCacheLiveDataModel.money.value == 1.2)
-        TestDiskCacheLiveDataModel.money.value = null
+        GlobalScope.launch(Dispatchers.Main) {
+            TestDiskCacheLiveDataModel.money.value = null
+            signal()
+        }
+        await()
         assert(TestDiskCacheLiveDataModel.money.value == null)
     }
 
@@ -126,27 +161,59 @@ class ORLruCacheDelegateTests: BaseTestCase() {
     @Test
     fun testDiskCacheLiveData() {
         assert(TestCacheLiveDataModel.name.value == null)
-        TestCacheLiveDataModel.name.value = "abc"
+        GlobalScope.launch(Dispatchers.Main) {
+            TestCacheLiveDataModel.name.value = "abc"
+            signal()
+        }
+        await()
         assert(TestCacheLiveDataModel.name.value == "abc")
-        TestCacheLiveDataModel.name.value = null
+        GlobalScope.launch(Dispatchers.Main) {
+            TestCacheLiveDataModel.name.value = null
+            signal()
+        }
+        await()
         assert(TestCacheLiveDataModel.name.value == null)
 
         assert(TestCacheLiveDataModel.sex.value == null)
-        TestCacheLiveDataModel.sex.value = true
+        GlobalScope.launch(Dispatchers.Main) {
+            TestCacheLiveDataModel.sex.value = true
+            signal()
+        }
+        await()
         assert(TestCacheLiveDataModel.sex.value == true)
-        TestCacheLiveDataModel.sex.value = null
+        GlobalScope.launch(Dispatchers.Main) {
+            TestCacheLiveDataModel.sex.value = null
+            signal()
+        }
+        await()
         assert(TestCacheLiveDataModel.sex.value == null)
 
         assert(TestCacheLiveDataModel.age.value == null)
-        TestCacheLiveDataModel.age.value = 123
+        GlobalScope.launch(Dispatchers.Main) {
+            TestCacheLiveDataModel.age.value = 123
+            signal()
+        }
+        await()
         assert(TestCacheLiveDataModel.age.value == 123)
-        TestCacheLiveDataModel.age.value = null
+        GlobalScope.launch(Dispatchers.Main) {
+            TestCacheLiveDataModel.age.value = null
+            signal()
+        }
+        await()
         assert(TestCacheLiveDataModel.age.value == null)
 
         assert(TestCacheLiveDataModel.money.value == null)
-        TestCacheLiveDataModel.money.value = 1.2
+        GlobalScope.launch(Dispatchers.Main) {
+            TestCacheLiveDataModel.money.value = 1.2
+            signal()
+        }
+        await()
         assert(TestCacheLiveDataModel.money.value == 1.2)
-        TestCacheLiveDataModel.money.value = null
+        GlobalScope.launch(Dispatchers.Main) {
+            TestCacheLiveDataModel.money.value = null
+            signal()
+        }
+        await()
         assert(TestCacheLiveDataModel.money.value == null)
     }
 }

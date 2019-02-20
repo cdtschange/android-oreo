@@ -1,5 +1,6 @@
 package com.cdts.demo.tab.repository
 
+import com.cdts.demo.data.cache.view.CacheActivity
 import com.cdts.demo.router.routeToUrl
 import com.cdts.demo.schema.repository.BaseRepository
 import com.cdts.demo.tab.view.MenuListViewActivity
@@ -10,6 +11,7 @@ import com.cdts.demo.ui.webview.view.WebBridgeViewActivity
 import com.cdts.oreo.ui.router.ORRouter
 import com.cdts.oreo.ui.schema.view.ORBaseListFragment
 import io.reactivex.Observable
+import java.lang.IllegalArgumentException
 import javax.inject.Inject
 
 class MenuListRepository @Inject constructor(): BaseRepository() {
@@ -29,13 +31,16 @@ class MenuListRepository @Inject constructor(): BaseRepository() {
             }
             MenuType.Data -> {
                 val data = mutableListOf<MenuModel>()
-//                data.add(ListItem("Location", "(${AKLocation.locationModel?.latitude ?: 0.0}, ${AKLocation.locationModel?.longitude ?: 0.0})", LocationActivity::class.java.name))
-//                data.add(ListItem("Device", "Device Info", DeviceInfoActivity::class.java.name))
-//                data.add(ListItem("Permission", "Permission", PermissionActivity::class.java.name))
-//                data.add(ListItem("Cache", "Local Cache", CacheActivity::class.java.name))
-//                data.add(ListItem("Network", "Retrofit", NetworkActivity::class.java.name))
-//                data.add(ListItem("Jetpack", "JetPack", JetpackActivity::class.java.name))
-//                data.add(ListItem("Installed App", "PackageManager", InstalledAppActivity::class.java.name))
+                data.add(MenuModel("Network", "", MenuListViewActivity::class.java.name,
+                    mapOf("type" to MenuType.Network.name, "title" to "Network"), null))
+                data.add(MenuModel("Cache", "", MenuListViewActivity::class.java.name,
+                    mapOf("type" to MenuType.Cache.name, "title" to "Cache"), null))
+                data.add(MenuModel("Device Info", "", MenuListViewActivity::class.java.name,
+                    mapOf("type" to MenuType.Cache.name, "title" to "Device Info"), null))
+                data.add(MenuModel("Location", "", MenuListViewActivity::class.java.name,
+                    mapOf("type" to MenuType.Cache.name, "title" to "Location"), null))
+                data.add(MenuModel("Crash", "", MenuListViewActivity::class.java.name,
+                    mapOf("type" to MenuType.Crash.name, "title" to "Crash"), null))
                 return Observable.just(data)
             }
 
@@ -47,8 +52,8 @@ class MenuListRepository @Inject constructor(): BaseRepository() {
                     mapOf("type" to ORBaseListFragment.ListViewType.RefreshOnly.name, "title" to "Refresh Only List View"), null))
                 data.add(MenuModel("Load More Only List View", "List View with load more footer", ListTypeActivity::class.java.name,
                     mapOf("type" to ORBaseListFragment.ListViewType.LoadMoreOnly.name, "title" to "Load More Only List View"), null))
-                data.add(MenuModel("Refersh & Load More List View", "List View with both refresh header and load more footer", ListTypeActivity::class.java.name,
-                    mapOf("type" to ORBaseListFragment.ListViewType.Both.name, "title" to "Refersh & Load More List View"), null))
+                data.add(MenuModel("Refresh & Load More List View", "List View with both refresh header and load more footer", ListTypeActivity::class.java.name,
+                    mapOf("type" to ORBaseListFragment.ListViewType.Both.name, "title" to "Refresh & Load More List View"), null))
                 return Observable.just(data)
             }
             MenuType.WebView -> {
@@ -64,6 +69,49 @@ class MenuListRepository @Inject constructor(): BaseRepository() {
                 })
                 return Observable.just(data)
             }
+
+            MenuType.Network -> {
+                val data = mutableListOf<MenuModel>()
+                data.add(MenuModel("GET Request", "", "", mapOf(), null))
+                data.add(MenuModel("POST Request", "", "", mapOf(), null))
+                data.add(MenuModel("PUT Request", "", "", mapOf(), null))
+                data.add(MenuModel("DELETE Request", "", "", mapOf(), null))
+                data.add(MenuModel("Upload File", "", "", mapOf(), null))
+                data.add(MenuModel("Upload Multipart Data", "", "", mapOf(), null))
+                return Observable.just(data)
+            }
+            MenuType.Cache -> {
+                val data = mutableListOf<MenuModel>()
+                data.add(MenuModel("Cache in temporary file", "", CacheActivity::class.java.name, mapOf("title" to "Cache in temporary file", "type" to "Cache"), null))
+                data.add(MenuModel("Cache in disk", "", CacheActivity::class.java.name, mapOf("title" to "Cache in disk", "type" to "Disk"), null))
+                data.add(MenuModel("Cache in SharedPreferences", "", CacheActivity::class.java.name, mapOf("title" to "Cache in SharedPreferences", "type" to "SharedPreferences"), null))
+                data.add(MenuModel("Cache with LiveData", "", CacheActivity::class.java.name, mapOf("title" to "Cache with LiveData", "type" to "LiveData"), null))
+                return Observable.just(data)
+            }
+            MenuType.Crash -> {
+                val data = mutableListOf<MenuModel>()
+                data.add(MenuModel("NullPointerException", "空指针异常", "", mapOf()) {
+                    val a: String? = null
+                    print(a!!)
+                })
+                data.add(MenuModel("IndexOutOfBoundsException", "越界异常", "", mapOf()) {
+                    val a = listOf(1, 2, 3)
+                    print(a[3])
+                })
+                data.add(MenuModel("IllegalArgumentException", "参数异常", "", mapOf()) {
+                    throw IllegalArgumentException()
+                })
+                data.add(MenuModel("IllegalStateException", "状态异常", "", mapOf()) {
+                    throw IllegalStateException()
+                })
+                data.add(MenuModel("IllegalAccessException", "权限异常", "", mapOf()) {
+                    throw IllegalAccessException()
+                })
+                data.add(MenuModel("ClassNotFoundException", "类不存在异常", "", mapOf()) {
+                    throw ClassNotFoundException()
+                })
+                return Observable.just(data)
+            }
             else -> return Observable.just(listOf())
         }
     }
@@ -72,7 +120,7 @@ class MenuListRepository @Inject constructor(): BaseRepository() {
 enum class MenuType {
     None, UIComponent, Data,
     ListView, WebView,
-    Cache, Crash
+    Network, Cache, Crash
 }
 
 data class MenuModel(val title: String, val detail: String, val url: String, val params: Map<String, Any>, val callback: (() -> Unit)?)

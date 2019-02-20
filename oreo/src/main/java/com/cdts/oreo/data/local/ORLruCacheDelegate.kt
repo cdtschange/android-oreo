@@ -39,10 +39,8 @@ class ORCacheLiveData<T>(private val cacheName: String): MutableLiveData<T>() {
      * value must be nullable
      */
     override fun setValue(value: T?) {
-        GlobalScope.launch(Dispatchers.Main) {
-            ORLruCache.getCache(ORLruCache.CacheType.Cache).put(cacheName, value)
-            super.setValue(value)
-        }
+        ORLruCache.getCache(ORLruCache.CacheType.Cache).put(cacheName, value)
+        super.setValue(value)
     }
 
     override fun getValue(): T? {
@@ -59,10 +57,8 @@ class ORDiskCacheLiveData<T>(private val cacheName: String): MutableLiveData<T>(
      * value must be nullable
      */
     override fun setValue(value: T?) {
-        GlobalScope.launch(Dispatchers.Main) {
-            ORLruCache.getCache(ORLruCache.CacheType.Disk).put(cacheName, value)
-            super.setValue(value)
-        }
+        ORLruCache.getCache(ORLruCache.CacheType.Disk).put(cacheName, value)
+        super.setValue(value)
     }
 
     override fun getValue(): T? {

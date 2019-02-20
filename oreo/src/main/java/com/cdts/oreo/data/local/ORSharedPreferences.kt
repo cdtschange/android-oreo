@@ -17,12 +17,12 @@ object ORSharedPreferences {
         if (!preferences.contains(key)) {
             return null
         }
-        return when(type::class) {
-            String::class -> preferences.getString(key, "") as? T
-            Int::class -> preferences.getInt(key, 0) as? T
-            Boolean::class -> preferences.getBoolean(key, false) as? T
-            Long::class -> preferences.getLong(key, 0L) as? T
-            Float::class -> preferences.getFloat(key, 0.0f) as? T
+        return when(type) {
+            String::class.java -> preferences.getString(key, "") as? T
+            Int::class.java -> preferences.getInt(key, 0) as? T
+            Boolean::class.java -> preferences.getBoolean(key, false) as? T
+            Long::class.java -> preferences.getLong(key, 0L) as? T
+            Double::class.java -> preferences.getFloat(key, 0.0f).toDouble() as? T
             else -> null
         }
     }
@@ -38,7 +38,7 @@ object ORSharedPreferences {
             is Int -> editor.putInt(key, value).apply()
             is Boolean -> editor.putBoolean(key, value).apply()
             is Long -> editor.putLong(key, value).apply()
-            is Float -> editor.putFloat(key, value).apply()
+            is Double -> editor.putFloat(key, value.toFloat()).apply()
             else -> return
         }
     }
