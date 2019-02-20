@@ -158,7 +158,7 @@ abstract class ORBaseActivity: AppCompatActivity(), ORRouterProtocol {
     open fun loadData() {}
 
     open fun showIndicator() {
-        indicator.show(this, null)
+        indicator.show(this, null, null)
     }
     open fun hideIndicator() {
         indicator.hide()

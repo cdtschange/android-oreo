@@ -23,6 +23,7 @@
         <activity android:name=".ui.listview.view.ListTypeActivity" android:theme="@style/AppTheme" />
         <activity android:name=".ui.webview.view.SimpleWebViewActivity" android:theme="@style/AppTheme" />
         <activity android:name=".ui.webview.view.WebBridgeViewActivity" android:theme="@style/AppTheme" />
+        <activity android:name=".ui.indicatorview.view.IndicatorViewActivity" android:theme="@style/AppTheme" />
 
     </application>
 

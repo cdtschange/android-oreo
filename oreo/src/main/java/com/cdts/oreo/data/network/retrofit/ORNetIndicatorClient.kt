@@ -19,7 +19,7 @@ object ORNetIndicatorClient {
     fun show(api: ORNetApiModel) {
         indicators[api.identifier]?.let { model ->
             model.indicator.get()?.let {
-                it.show(model.context.get(), model.text)
+                it.show(model.context.get(), model.text, null)
             }
         }
     }

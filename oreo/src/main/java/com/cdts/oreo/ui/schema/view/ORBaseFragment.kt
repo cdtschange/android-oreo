@@ -82,7 +82,7 @@ abstract class ORBaseFragment : Fragment() {
     open fun loadData() {}
 
     open fun showIndicator() {
-        indicator.show(activity, null)
+        indicator.show(activity, null, null)
     }
     open fun hideIndicator() {
         indicator.hide()

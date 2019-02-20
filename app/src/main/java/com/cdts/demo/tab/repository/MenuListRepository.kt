@@ -3,6 +3,7 @@ package com.cdts.demo.tab.repository
 import com.cdts.demo.router.routeToUrl
 import com.cdts.demo.schema.repository.BaseRepository
 import com.cdts.demo.tab.view.MenuListViewActivity
+import com.cdts.demo.ui.indicatorview.view.IndicatorViewActivity
 import com.cdts.demo.ui.listview.view.ListTypeActivity
 import com.cdts.demo.ui.webview.view.SimpleWebViewActivity
 import com.cdts.demo.ui.webview.view.WebBridgeViewActivity
@@ -22,6 +23,8 @@ class MenuListRepository @Inject constructor(): BaseRepository() {
                     mapOf("type" to MenuType.ListView.name, "title" to "List View"), null))
                 data.add(MenuModel("Web View", "", MenuListViewActivity::class.java.name,
                     mapOf("type" to MenuType.WebView.name, "title" to "Web View"), null))
+                data.add(MenuModel("Indicator View", "", IndicatorViewActivity::class.java.name,
+                    mapOf("title" to "Indicator View"), null))
                 return Observable.just(data)
             }
             MenuType.Data -> {

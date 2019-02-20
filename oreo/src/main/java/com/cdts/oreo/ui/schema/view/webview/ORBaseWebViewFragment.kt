@@ -41,7 +41,7 @@ abstract class ORBaseWebViewFragment: ORBaseFragment(), ORWebKit {
     }
 
     override fun webViewWillLoad(view: WebView?, url: String?): Boolean {
-        indicator.show(activity, null)
+        indicator.show(activity, null, null)
         return super.webViewWillLoad(view, url)
     }
     override fun webViewDidLoadSuccess(view: WebView?, url: String?) {
