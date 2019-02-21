@@ -18,9 +18,9 @@ import timber.log.Timber
 import javax.inject.Inject
 
 open class BaseWebViewFragment: ORBaseWebViewFragment() {
-    override var layoutResID: Int = R.layout.fragment_webview
+    override val layoutResID: Int = R.layout.fragment_webview
 
-    override var titleBar: ORToolBar? = null
+    override val titleBar: ORToolBar?
         get() = demoToolBar
 
     @Inject

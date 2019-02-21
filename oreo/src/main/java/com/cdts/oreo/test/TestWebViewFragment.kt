@@ -9,14 +9,13 @@ import com.cdts.oreo.ui.view.indicator.ORIndicatorProtocol
 import com.cdts.oreo.ui.view.toolbar.ORToolBar
 import com.github.lzyzsd.jsbridge.BridgeWebView
 import kotlinx.android.synthetic.main.test_fragment_empty.*
-import javax.inject.Inject
 
 class TestWebViewFragment: ORBaseWebViewFragment() {
-    override var layoutResID: Int = R.layout.test_fragment_webview
+    override val layoutResID: Int = R.layout.test_fragment_webview
     override var indicator: ORIndicatorProtocol = ORIndicator()
     override var viewModel: ORBaseViewModel = ORBaseViewModel()
 
-    override var titleBar: ORToolBar? = null
+    override val titleBar: ORToolBar?
         get() = testToolBar
 
     override var webView: BridgeWebView by Bind(R.id.webView)

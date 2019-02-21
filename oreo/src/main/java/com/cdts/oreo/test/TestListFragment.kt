@@ -21,9 +21,9 @@ import kotlinx.coroutines.launch
 
 class TestListFragment : ORBaseListFragment() {
 
-    override var layoutResID: Int = R.layout.test_fragment_list
+    override val layoutResID: Int = R.layout.test_fragment_list
 
-    override var titleBar: ORToolBar? = null
+    override val titleBar: ORToolBar?
         get() = testToolBar
 
     override var viewModel: ORBaseViewModel = TestListViewModel()

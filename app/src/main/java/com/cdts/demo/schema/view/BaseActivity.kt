@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 abstract class BaseActivity: ORBaseActivity() {
 
-    override var titleBar: ORToolBar? = null
+    override val titleBar: ORToolBar? = null
     open var statusBarColor: Int = R.color.colorPrimary
     open var isFitSystemWindows = true
 

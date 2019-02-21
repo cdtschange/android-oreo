@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment
 import com.cdts.demo.dagger.activity.ActivityScope
 import com.cdts.demo.data.cache.viewmodel.CacheViewModel
 import com.cdts.demo.data.device.viewmodel.DeviceInfoViewModel
+import com.cdts.demo.data.location.viewmodel.LocationViewModel
 import com.cdts.demo.data.network.viewmodel.NetworkViewModel
 import com.cdts.demo.tab.viewmodel.MenuListViewModel
 import com.cdts.demo.ui.indicatorview.viewmodel.IndicatorViewModel
@@ -70,6 +71,13 @@ class FragmentModule(private val fragment: Fragment) {
     @Suppress("UNCHECKED_CAST")
     internal fun provideDeviceInfoViewModel(): DeviceInfoViewModel {
         return ORBaseViewModel.createViewModel(fragment) { DeviceInfoViewModel() }
+    }
+
+    @Provides
+    @ActivityScope
+    @Suppress("UNCHECKED_CAST")
+    internal fun provideLocationViewModel(): LocationViewModel {
+        return ORBaseViewModel.createViewModel(fragment) { LocationViewModel() }
     }
 
 }

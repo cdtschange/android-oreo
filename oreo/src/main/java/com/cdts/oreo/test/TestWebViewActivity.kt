@@ -15,12 +15,12 @@ class TestWebViewActivity : ORBaseActivity() {
     var url: String? = null
     var htmlData: String? = null
 
-    override var titleBar: ORToolBar? = null
+    override val titleBar: ORToolBar? = null
     override var indicator: ORIndicatorProtocol = ORIndicator()
     override var viewModel: ORBaseViewModel = ORBaseViewModel()
     var fragment: Fragment = TestWebViewFragment()
 
-    override var layoutResID: Int = R.layout.test_activity_single_fragment
+    override val layoutResID: Int = R.layout.test_activity_single_fragment
 
     override fun setupUI() {
         super.setupUI()

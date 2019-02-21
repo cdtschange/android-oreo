@@ -9,10 +9,10 @@ import com.cdts.oreo.ui.view.toolbar.ORToolBar
 import kotlinx.android.synthetic.main.test_fragment_empty.*
 
 class TestEmptyFragment: ORBaseFragment() {
-    override var layoutResID: Int = R.layout.test_fragment_empty
+    override val layoutResID: Int = R.layout.test_fragment_empty
     override var indicator: ORIndicatorProtocol = ORIndicator()
     override var viewModel: ORBaseViewModel = ORBaseViewModel()
 
-    override var titleBar: ORToolBar? = null
+    override val titleBar: ORToolBar?
         get() = testToolBar
 }

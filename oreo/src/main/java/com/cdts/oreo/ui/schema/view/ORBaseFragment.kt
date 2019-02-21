@@ -21,8 +21,8 @@ import timber.log.Timber
 
 abstract class ORBaseFragment : Fragment() {
 
-    abstract var layoutResID: Int
-    abstract var titleBar: ORToolBar?
+    abstract val layoutResID: Int
+    abstract val titleBar: ORToolBar?
     open lateinit var indicator: ORIndicatorProtocol
     open lateinit var viewModel: ORBaseViewModel
 

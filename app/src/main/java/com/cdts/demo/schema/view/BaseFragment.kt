@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 abstract class BaseFragment: ORBaseFragment() {
 
-    override var titleBar: ORToolBar? = null
+    override val titleBar: ORToolBar? = null
 
     @Inject
     override lateinit var indicator: ORIndicatorProtocol

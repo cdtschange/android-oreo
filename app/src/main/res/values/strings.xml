@@ -7,6 +7,6 @@
     <string name="ui">UI</string>
     <string name="data">Data</string>
     <string name="home">Home</string>
-    <string name="android_kit">Android Kit</string>
+    <string name="oreo">Oreo</string>
     <string name="desc">This is a default description</string>
 </resources>

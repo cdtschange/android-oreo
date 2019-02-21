@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import com.cdts.demo.dagger.activity.ActivityScope
 import com.cdts.demo.data.cache.repository.CacheRepository
 import com.cdts.demo.data.device.repository.DeviceInfoRepository
+import com.cdts.demo.data.location.repository.LocationRepository
 import com.cdts.demo.data.network.repository.NetworkRepository
 import com.cdts.demo.tab.repository.MenuListRepository
 import com.cdts.demo.ui.indicatorview.repository.IndicatorViewRepository
@@ -55,6 +56,12 @@ class ViewModelModule(private val viewModel: ViewModel) {
     @ActivityScope
     internal fun provideDeviceInfoRepository(): DeviceInfoRepository {
         return DeviceInfoRepository()
+    }
+
+    @Provides
+    @ActivityScope
+    internal fun provideLocationRepository(): LocationRepository {
+        return LocationRepository()
     }
 
 

@@ -15,9 +15,9 @@ import javax.inject.Inject
 
 abstract class BaseListFragment : ORBaseListFragment() {
 
-    override var layoutResID: Int = R.layout.fragment_list_with_toolbar
+    override val layoutResID: Int = R.layout.fragment_list_with_toolbar
 
-    override var titleBar: ORToolBar? = null
+    override val titleBar: ORToolBar?
         get() = demoToolBar
 
     @Inject

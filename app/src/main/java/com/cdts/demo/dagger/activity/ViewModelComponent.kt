@@ -4,6 +4,7 @@ import com.cdts.demo.dagger.activity.module.ViewModelModule
 import com.cdts.demo.dagger.application.ApplicationComponent
 import com.cdts.demo.data.cache.viewmodel.CacheViewModel
 import com.cdts.demo.data.device.viewmodel.DeviceInfoViewModel
+import com.cdts.demo.data.location.viewmodel.LocationViewModel
 import com.cdts.demo.data.network.viewmodel.NetworkViewModel
 import com.cdts.demo.schema.viewmodel.BaseListViewModel
 import com.cdts.demo.schema.viewmodel.BaseViewModel
@@ -25,4 +26,5 @@ interface ViewModelComponent {
     fun inject(viewModel: CacheViewModel)
     fun inject(viewModel: NetworkViewModel)
     fun inject(viewModel: DeviceInfoViewModel)
+    fun inject(viewModel: LocationViewModel)
 }

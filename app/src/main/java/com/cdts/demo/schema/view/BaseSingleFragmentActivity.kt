@@ -7,7 +7,7 @@ import com.cdts.demo.R
 abstract class BaseSingleFragmentActivity : BaseActivity() {
     protected abstract var fragment: Fragment
 
-    override var layoutResID: Int = R.layout.activity_single_fragment
+    override val layoutResID: Int = R.layout.activity_single_fragment
 
     override fun setupUI() {
         super.setupUI()

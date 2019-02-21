@@ -13,7 +13,7 @@ class TestToolBar : ORToolBar {
     constructor(context: Context, attrs: AttributeSet?): this(context, attrs,0)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int): super(context, attrs, defStyleAttr)
 
-    override var layoutResID: Int = 0
+    override val layoutResID: Int
         get() = R.layout.test_toolbar_title
 
     override var mToolbar: Toolbar by Bind(R.id.toolbar)

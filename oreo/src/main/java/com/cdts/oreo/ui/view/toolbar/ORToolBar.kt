@@ -12,7 +12,7 @@ abstract class ORToolBar: LinearLayout {
 
     var view: View
     val inflater: LayoutInflater
-    abstract var layoutResID: Int
+    abstract val layoutResID: Int
     abstract var mToolbar: Toolbar
 
     constructor(context: Context): this(context,null)

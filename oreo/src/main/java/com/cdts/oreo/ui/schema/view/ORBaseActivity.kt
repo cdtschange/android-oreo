@@ -38,8 +38,8 @@ abstract class ORBaseActivity: AppCompatActivity(), ORRouterProtocol {
 
     }
 
-    abstract var layoutResID: Int
-    abstract var titleBar: ORToolBar?
+    abstract val layoutResID: Int
+    abstract val titleBar: ORToolBar?
     open lateinit var indicator: ORIndicatorProtocol
     open lateinit var viewModel: ORBaseViewModel
     open var canBackPress: Boolean = true

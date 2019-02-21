@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.test_activity_main.*
 
 class MainTestActivity : ORBaseActivity() {
 
-    override var titleBar: ORToolBar? = null
-    override var layoutResID: Int = R.layout.test_activity_main
+    override val titleBar: ORToolBar? = null
+    override val layoutResID: Int = R.layout.test_activity_main
     override var indicator: ORIndicatorProtocol = ORIndicator()
     override var viewModel: ORBaseViewModel = ORBaseViewModel()
 

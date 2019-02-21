@@ -31,9 +31,9 @@
 
     <ImageView
         android:id="@+id/imgArrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_arrow_next"
+        android:layout_width="@dimen/dimens_20"
+        android:layout_height="@dimen/dimens_20"
+        android:src="@drawable/ic_arrow_right"
         android:tint="@color/colorGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

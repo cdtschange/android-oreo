@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
-    override var layoutResID: Int = R.layout.activity_main
+    override val layoutResID: Int = R.layout.activity_main
 
     override fun setupUI() {
         super.setupUI()
