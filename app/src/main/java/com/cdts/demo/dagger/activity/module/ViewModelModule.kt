@@ -3,6 +3,7 @@ package com.cdts.demo.dagger.activity.module
 import android.arch.lifecycle.ViewModel
 import com.cdts.demo.dagger.activity.ActivityScope
 import com.cdts.demo.data.cache.repository.CacheRepository
+import com.cdts.demo.data.network.repository.NetworkRepository
 import com.cdts.demo.tab.repository.MenuListRepository
 import com.cdts.demo.ui.indicatorview.repository.IndicatorViewRepository
 import com.cdts.demo.ui.listview.repository.ListTypeRepository
@@ -41,6 +42,12 @@ class ViewModelModule(private val viewModel: ViewModel) {
     @ActivityScope
     internal fun provideCacheRepository(): CacheRepository {
         return CacheRepository()
+    }
+
+    @Provides
+    @ActivityScope
+    internal fun provideNetworkRepository(): NetworkRepository {
+        return NetworkRepository()
     }
 
 

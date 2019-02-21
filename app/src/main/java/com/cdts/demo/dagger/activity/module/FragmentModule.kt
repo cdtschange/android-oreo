@@ -3,6 +3,7 @@ package com.cdts.demo.dagger.activity.module
 import android.support.v4.app.Fragment
 import com.cdts.demo.dagger.activity.ActivityScope
 import com.cdts.demo.data.cache.viewmodel.CacheViewModel
+import com.cdts.demo.data.network.viewmodel.NetworkViewModel
 import com.cdts.demo.tab.viewmodel.MenuListViewModel
 import com.cdts.demo.ui.indicatorview.viewmodel.IndicatorViewModel
 import com.cdts.demo.ui.listview.viewmodel.ListTypeViewModel
@@ -54,6 +55,13 @@ class FragmentModule(private val fragment: Fragment) {
     @Suppress("UNCHECKED_CAST")
     internal fun provideCacheViewModel(): CacheViewModel {
         return ORBaseViewModel.createViewModel(fragment) { CacheViewModel() }
+    }
+
+    @Provides
+    @ActivityScope
+    @Suppress("UNCHECKED_CAST")
+    internal fun provideNetworkViewModel(): NetworkViewModel {
+        return ORBaseViewModel.createViewModel(fragment) { NetworkViewModel() }
     }
 
 }

@@ -1,6 +1,7 @@
 package com.cdts.demo.tab.repository
 
 import com.cdts.demo.data.cache.view.CacheActivity
+import com.cdts.demo.data.network.view.NetworkActivity
 import com.cdts.demo.router.routeToUrl
 import com.cdts.demo.schema.repository.BaseRepository
 import com.cdts.demo.tab.view.MenuListViewActivity
@@ -72,12 +73,11 @@ class MenuListRepository @Inject constructor(): BaseRepository() {
 
             MenuType.Network -> {
                 val data = mutableListOf<MenuModel>()
-                data.add(MenuModel("GET Request", "", "", mapOf(), null))
-                data.add(MenuModel("POST Request", "", "", mapOf(), null))
-                data.add(MenuModel("PUT Request", "", "", mapOf(), null))
-                data.add(MenuModel("DELETE Request", "", "", mapOf(), null))
-                data.add(MenuModel("Upload File", "", "", mapOf(), null))
-                data.add(MenuModel("Upload Multipart Data", "", "", mapOf(), null))
+                data.add(MenuModel("GET Request", "", NetworkActivity::class.java.name, mapOf("title" to "GET Request", "type" to "Get"), null))
+                data.add(MenuModel("POST Request", "", NetworkActivity::class.java.name, mapOf("title" to "POST Request", "type" to "Post"), null))
+                data.add(MenuModel("PUT Request", "", NetworkActivity::class.java.name, mapOf("title" to "PUT Request", "type" to "Put"), null))
+                data.add(MenuModel("DELETE Request", "", NetworkActivity::class.java.name, mapOf("title" to "DELETE Request", "type" to "Delete"), null))
+                data.add(MenuModel("Upload Multipart Data", "", NetworkActivity::class.java.name, mapOf("title" to "Upload Multipart Data", "type" to "MultipartUpload"), null))
                 return Observable.just(data)
             }
             MenuType.Cache -> {

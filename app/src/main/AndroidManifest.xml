@@ -26,6 +26,7 @@
         <activity android:name=".ui.indicatorview.view.IndicatorViewActivity" android:theme="@style/AppTheme" />
         <activity android:name=".data.cache.view.CacheActivity" android:theme="@style/AppTheme" />
         <activity android:name="com.didichuxing.doraemonkit.ui.UniversalActivity" android:theme="@style/AppTheme" />
+        <activity android:name=".data.network.view.NetworkActivity" android:theme="@style/AppTheme" />
 
     </application>
 

@@ -181,10 +181,10 @@ abstract class ORNetApi {
                 if (api is ORNetApiUploadMultipartProtocol) {
                     request.multipart(requestUrl, getMultipartBody(api), getMultipartBodyParts(api))
                 } else {
-                    request.post(requestUrl, api.params)
+                    request.post(requestUrl, (baseParams ?: mapOf()) + api.params)
                 }
             }
-            ORHttpMethod.PUT -> request.put(requestUrl, api.params)
+            ORHttpMethod.PUT -> request.put(requestUrl, (baseParams ?: mapOf()) + api.params)
             ORHttpMethod.DELETE -> request.delete(requestUrl, api.params)
         }
         ORNetClient.add(api)
@@ -253,7 +253,7 @@ abstract class ORNetApi {
 
     private fun getMultipartBody(api: ORNetApiModel): Map<String, RequestBody> {
         val body = mutableMapOf<String, RequestBody>()
-        api.params.forEach { (key, value) ->
+        ((baseParams ?: mapOf()) + api.params).forEach { (key, value) ->
             body[key] = RequestBody.create(MediaType.parse("multipart/form-data"), value)
         }
         return body
