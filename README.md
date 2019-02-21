@@ -25,3 +25,24 @@
 </p>
 
 Oreo is a convenient sdk for android project.
+
+## Features
+
+- [x] MVVM
+- [x] Network
+- [x] Cache
+- [x] Location
+- [x] Schema
+- [x] Extensions
+
+
+## Requirements
+
+- Android SDK 19+
+
+## Installation
+
+### Gradle
+```ruby
+implementation "com.github.cdtschange:android-oreo:0.1.1"
+```
