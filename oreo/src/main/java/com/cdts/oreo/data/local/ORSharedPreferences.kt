@@ -8,7 +8,7 @@ import com.cdts.oreo.ui.application.ORApplication
 object ORSharedPreferences {
 
     val preferences: SharedPreferences by lazy {
-        val context = ORApplication.application!!
+        val context = ORApplication.application
         context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
     }
 

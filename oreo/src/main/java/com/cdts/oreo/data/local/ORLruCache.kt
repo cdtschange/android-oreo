@@ -21,11 +21,11 @@ open class ORLruCache {
         var maxSize: Long = Long.MAX_VALUE
 
         private val cacheForCache: ORLruCache by lazy {
-            val context = ORApplication.application!!
+            val context = ORApplication.application
             ORLruCache(context.packageName, context, CacheType.Cache)
         }
         private val cacheForDisk: ORLruCache by lazy {
-            val context = ORApplication.application!!
+            val context = ORApplication.application
             ORLruCache(context.packageName, context, CacheType.Disk)
         }
 

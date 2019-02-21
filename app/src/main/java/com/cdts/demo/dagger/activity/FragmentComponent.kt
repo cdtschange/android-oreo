@@ -3,6 +3,7 @@ package com.cdts.demo.dagger.activity
 import com.cdts.demo.dagger.application.ApplicationComponent
 import com.cdts.demo.dagger.activity.module.FragmentModule
 import com.cdts.demo.data.cache.view.CacheFragment
+import com.cdts.demo.data.device.view.DeviceInfoFragment
 import com.cdts.demo.data.network.view.NetworkFragment
 import com.cdts.demo.schema.view.BaseFragment
 import com.cdts.demo.schema.view.BaseListFragment
@@ -29,4 +30,5 @@ interface FragmentComponent {
     fun inject(fragment: IndicatorViewFragment)
     fun inject(fragment: CacheFragment)
     fun inject(fragment: NetworkFragment)
+    fun inject(fragment: DeviceInfoFragment)
 }

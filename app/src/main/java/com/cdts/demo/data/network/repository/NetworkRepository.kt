@@ -31,7 +31,7 @@ class NetworkRepository: BaseRepository() {
             }
             NetworkType.MultipartUpload -> {
                 val model = MultipartUploadNetApiModel()
-                val fileUri = ORApplication.application!!.applicationContext.resources.openRawResource(R.raw.rainbow)
+                val fileUri = ORApplication.application.applicationContext.resources.openRawResource(R.raw.rainbow)
                 val imageFile = fileUri.toFile(Environment.getExternalStorageDirectory().path + "/temp.jpg")
                 val file = ORUploadMultipartFile(imageFile, "name", "fileName", "image/jpeg")
                 model.files = listOf(file)

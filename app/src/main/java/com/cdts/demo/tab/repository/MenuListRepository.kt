@@ -1,6 +1,7 @@
 package com.cdts.demo.tab.repository
 
 import com.cdts.demo.data.cache.view.CacheActivity
+import com.cdts.demo.data.device.view.DeviceInfoActivity
 import com.cdts.demo.data.network.view.NetworkActivity
 import com.cdts.demo.router.routeToUrl
 import com.cdts.demo.schema.repository.BaseRepository
@@ -36,8 +37,8 @@ class MenuListRepository @Inject constructor(): BaseRepository() {
                     mapOf("type" to MenuType.Network.name, "title" to "Network"), null))
                 data.add(MenuModel("Cache", "", MenuListViewActivity::class.java.name,
                     mapOf("type" to MenuType.Cache.name, "title" to "Cache"), null))
-                data.add(MenuModel("Device Info", "", MenuListViewActivity::class.java.name,
-                    mapOf("type" to MenuType.Cache.name, "title" to "Device Info"), null))
+                data.add(MenuModel("Device Info", "", DeviceInfoActivity::class.java.name,
+                    mapOf("title" to "Device Info"), null))
                 data.add(MenuModel("Location", "", MenuListViewActivity::class.java.name,
                     mapOf("type" to MenuType.Cache.name, "title" to "Location"), null))
                 data.add(MenuModel("Crash", "", MenuListViewActivity::class.java.name,

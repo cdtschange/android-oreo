@@ -24,14 +24,14 @@ object ORNetClient {
      * 当前网络是否可用
      */
     private fun isNetworkConnected(): Boolean  {
-        val manager = ORApplication.application!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val manager = ORApplication.application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         return manager.activeNetworkInfo?.isConnected ?: false
     }
     /**
      * 当前WIFI是否可用
      */
     private fun isWifiConnected(): Boolean {
-        val manager = ORApplication.application!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val manager = ORApplication.application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             manager.getNetworkCapabilities(manager.activeNetwork).hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
         } else {
@@ -43,7 +43,7 @@ object ORNetClient {
      * 当前网络的连接类型
      */
     fun getNetworkClass(): Int? {
-        val manager = ORApplication.application!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val manager = ORApplication.application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val netWorkInfo = manager.activeNetworkInfo
         return if (netWorkInfo != null && netWorkInfo.isAvailable && netWorkInfo.isConnected) {
             netWorkInfo.type
