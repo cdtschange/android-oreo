@@ -51,6 +51,7 @@ buildscript {
 
 
     repositories {
+        mavenCentral()
         google()
         jcenter()
         maven { url 'https://dl.bintray.com/umsdk/release' }
@@ -68,6 +69,7 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenCentral()
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
