@@ -80,6 +80,7 @@ dependencies {
     api "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid_version"
     api "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxbinding_version"
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-reflect:$rootProject.kotlin_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.kotlin_coroutines_version"
 
     api "com.google.dagger:dagger:$rootProject.dagger_version"
