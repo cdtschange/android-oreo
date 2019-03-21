@@ -7,6 +7,7 @@ import com.cdts.demo.ui.application.MyApplication
 import com.cdts.oreo.ui.schema.view.ORBaseActivity
 import com.cdts.oreo.ui.view.indicator.ORIndicatorProtocol
 import com.cdts.oreo.ui.view.toolbar.ORToolBar
+import com.umeng.message.PushAgent
 import javax.inject.Inject
 
 abstract class BaseActivity: ORBaseActivity() {
@@ -17,6 +18,11 @@ abstract class BaseActivity: ORBaseActivity() {
 
     @Inject
     override lateinit var indicator: ORIndicatorProtocol
+
+    override fun setupUI() {
+        super.setupUI()
+        PushAgent.getInstance(this).onAppStart()
+    }
 
 
     override fun setupDagger() {

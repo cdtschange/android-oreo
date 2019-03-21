@@ -94,8 +94,12 @@ abstract class ORBaseActivity: AppCompatActivity(), ORRouterProtocol {
 
     override fun onDestroy() {
         super.onDestroy()
-        ORRouter.pop(this)
         Timber.e("Destroy: $this")
+    }
+
+    override fun finish() {
+        super.finish()
+        ORRouter.pop(this)
     }
 
     private fun setParamsFromBundle(bundle: Bundle?) {

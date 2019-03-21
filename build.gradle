@@ -43,7 +43,9 @@ buildscript {
         easy_device_info_version = '2.4.1'
 
         umsdk_analytics_version = '8.0.0'
-        umsdk_common_version = '2.0.0'
+        umsdk_common_version = '2.0.1'
+        umsdk_push_version = '5.0.2'
+        umsdk_utdid_version = '1.1.5.3'
         doraemon_version = '1.1.0'
     }
 

@@ -7,6 +7,8 @@ import com.cdts.demo.data.network.view.NetworkActivity
 import com.cdts.demo.router.routeToUrl
 import com.cdts.demo.schema.repository.BaseRepository
 import com.cdts.demo.tab.view.MenuListViewActivity
+import com.cdts.demo.ui.animation.view.AnimationActivity
+import com.cdts.demo.ui.animation.view.AnimationType
 import com.cdts.demo.ui.indicatorview.view.IndicatorViewActivity
 import com.cdts.demo.ui.listview.view.ListTypeActivity
 import com.cdts.demo.ui.webview.view.SimpleWebViewActivity
@@ -30,6 +32,8 @@ class MenuListRepository @Inject constructor(): BaseRepository() {
                     mapOf("type" to MenuType.WebView.name, "title" to "Web View"), null))
                 data.add(MenuModel("Indicator View", "", IndicatorViewActivity::class.java.name,
                     mapOf("title" to "Indicator View"), null))
+                data.add(MenuModel("Animation", "", MenuListViewActivity::class.java.name,
+                    mapOf("type" to MenuType.Animation.name, "title" to "Animation"), null))
                 return Observable.just(data)
             }
             MenuType.Data -> {
@@ -70,6 +74,24 @@ class MenuListRepository @Inject constructor(): BaseRepository() {
                 data.add(MenuModel("Web View For Bridge", "Custom Bridge for navtive & js call each other", "", mapOf()) {
                     ORRouter.routeToUrl(WebBridgeViewActivity::class.java.name, "")
                 })
+                return Observable.just(data)
+            }
+            MenuType.Animation -> {
+                val data = mutableListOf<MenuModel>()
+                data.add(MenuModel("Frame Animation", "", AnimationActivity::class.java.name,
+                    mapOf("type" to AnimationType.Frame.name, "title" to "Frame Animation"), null))
+                data.add(MenuModel("Frame Accelerate Animation", "", AnimationActivity::class.java.name,
+                    mapOf("type" to AnimationType.FrameAccelerate.name, "title" to "Frame Accelerate Animation"), null))
+                data.add(MenuModel("Scale Animation", "", AnimationActivity::class.java.name,
+                    mapOf("type" to AnimationType.Scale.name, "title" to "Scale Animation"), null))
+                data.add(MenuModel("Rotation Animation", "", AnimationActivity::class.java.name,
+                    mapOf("type" to AnimationType.Rotation.name, "title" to "Rotation Animation"), null))
+                data.add(MenuModel("Alpha Animation", "", AnimationActivity::class.java.name,
+                    mapOf("type" to AnimationType.Alpha.name, "title" to "Alpha Animation"), null))
+                data.add(MenuModel("Color Animation", "", AnimationActivity::class.java.name,
+                    mapOf("type" to AnimationType.Color.name, "title" to "Color Animation"), null))
+                data.add(MenuModel("Combine Animation", "", AnimationActivity::class.java.name,
+                    mapOf("type" to AnimationType.Combine.name, "title" to "Combine Animation"), null))
                 return Observable.just(data)
             }
 
@@ -121,7 +143,7 @@ class MenuListRepository @Inject constructor(): BaseRepository() {
 
 enum class MenuType {
     None, UIComponent, Data,
-    ListView, WebView,
+    ListView, WebView, Animation,
     Network, Cache, Crash
 }
 

@@ -65,6 +65,8 @@ dependencies {
 
     implementation "com.umeng.umsdk:analytics:$rootProject.umsdk_analytics_version"
     implementation "com.umeng.umsdk:common:$rootProject.umsdk_common_version"
+    implementation "com.umeng.umsdk:push:$rootProject.umsdk_push_version"
+    implementation "com.umeng.umsdk:utdid:$rootProject.umsdk_utdid_version"
 
     implementation "com.kaopiz:kprogresshud:$rootProject.kprogresshud_version"
     debugImplementation "com.didichuxing.doraemonkit:doraemonkit:$rootProject.doraemon_version"
