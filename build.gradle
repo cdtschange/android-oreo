@@ -53,11 +53,17 @@ buildscript {
     repositories {
         mavenCentral()
         google()
-        jcenter()
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
+
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+        }
         maven { url 'https://dl.bintray.com/umsdk/release' }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:3.3.1"
+        classpath "com.android.tools.build:gradle:3.3.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.github.dcendents:android-maven-gradle-plugin:2.1"
         classpath "com.didichuxing.doraemonkit:compiler:1.0.0"
@@ -71,7 +77,13 @@ allprojects {
     repositories {
         mavenCentral()
         google()
-        jcenter()
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
+
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+        }
         maven { url 'https://jitpack.io' }
         maven { url 'https://dl.bintray.com/umsdk/release' }
 
