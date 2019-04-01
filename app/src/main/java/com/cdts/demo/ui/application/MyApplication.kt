@@ -6,7 +6,11 @@ import com.cdts.demo.dagger.application.DaggerApplicationComponent
 import com.cdts.demo.dagger.application.module.ApplicationModule
 import com.cdts.demo.libs.DoraemonLib
 import com.cdts.demo.libs.UMengLib
+import com.cdts.oreo.data.crash.ORCrashHandler
+import com.cdts.oreo.data.local.ORDiskCache
 import com.cdts.oreo.ui.application.ORApplication
+import com.pintec.velo.libs.TimberLib
+import timber.log.Timber
 
 class MyApplication: Application() {
 
@@ -24,5 +28,10 @@ class MyApplication: Application() {
 
         UMengLib.setup(this)
         DoraemonLib.setup(this)
+        TimberLib.setup()
+
+        ORCrashHandler.shared.registerExceptionHandler { thread, ex, message ->
+            Timber.e(message)
+        }
     }
 }
