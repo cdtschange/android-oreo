@@ -8,7 +8,7 @@ import java.io.StringWriter
 import java.util.*
 
 
-class ORCrashHandler() : Thread.UncaughtExceptionHandler {
+class ORCrashHandler : Thread.UncaughtExceptionHandler {
 
     companion object {
         val shared = ORCrashHandler()
@@ -18,7 +18,7 @@ class ORCrashHandler() : Thread.UncaughtExceptionHandler {
 
     private var handler: ((thread: Thread, ex: Throwable, message: String) -> Unit)? = null
 
-    fun remove() {
+    fun removeExceptionHandler() {
         Thread.setDefaultUncaughtExceptionHandler(mDefaultHandler)
         mDefaultHandler = null
 
