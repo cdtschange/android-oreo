@@ -53,13 +53,14 @@ buildscript {
     repositories {
         mavenCentral()
         google()
-        maven {
-            url 'http://maven.aliyun.com/nexus/content/groups/public/'
-        }
-
-        maven {
-            url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
-        }
+        jcenter()
+//        maven {
+//            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+//        }
+//
+//        maven {
+//            url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+//        }
         maven { url 'https://dl.bintray.com/umsdk/release' }
     }
     dependencies {
@@ -77,13 +78,15 @@ allprojects {
     repositories {
         mavenCentral()
         google()
-        maven {
-            url 'http://maven.aliyun.com/nexus/content/groups/public/'
-        }
-
-        maven {
-            url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
-        }
+        jcenter()
+//
+//        maven {
+//            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+//        }
+//
+//        maven {
+//            url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+//        }
         maven { url 'https://jitpack.io' }
         maven { url 'https://dl.bintray.com/umsdk/release' }
 
