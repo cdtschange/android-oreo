@@ -122,6 +122,7 @@ class ORDeviceTests: BaseTestCase() {
         print(ORDevice.serial)
         print(ORDevice.serialNumber)
         print(ORDevice.orientation)
+        print(ORDevice.isEmulator)
 
         print(ORDevice.displayResolution)
         print(ORDevice.screenDensity)

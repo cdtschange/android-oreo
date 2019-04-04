@@ -127,6 +127,7 @@ class DeviceInfoRepository: BaseRepository() {
         data.add(DeviceInfoModel("Serial", ORDevice.serial))
         data.add(DeviceInfoModel("Serial Number", ORDevice.serialNumber))
         data.add(DeviceInfoModel("Orientation", ORDevice.orientation))
+        data.add(DeviceInfoModel("Is Emulator", ORDevice.isEmulator))
 
         data.add(DeviceInfoModel("Display Resolution", ORDevice.displayResolution))
         data.add(DeviceInfoModel("Screen Density", ORDevice.screenDensity))

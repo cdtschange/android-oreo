@@ -44,5 +44,5 @@ Oreo is a convenient sdk for android project.
 
 ### Gradle
 ```ruby
-implementation "com.github.cdtschange:android-oreo:0.1.4"
+implementation "com.github.cdtschange:android-oreo:0.1.5"
 ```
