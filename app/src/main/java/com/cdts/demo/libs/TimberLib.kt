@@ -1,4 +1,4 @@
-package com.pintec.velo.libs
+package com.cdts.demo.libs
 
 import android.util.Log
 import com.cdts.demo.config.GlobalConfig

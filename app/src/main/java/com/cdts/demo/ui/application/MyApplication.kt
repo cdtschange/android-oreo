@@ -9,7 +9,7 @@ import com.cdts.demo.libs.UMengLib
 import com.cdts.oreo.data.crash.ORCrashHandler
 import com.cdts.oreo.data.local.ORDiskCache
 import com.cdts.oreo.ui.application.ORApplication
-import com.pintec.velo.libs.TimberLib
+import com.cdts.demo.libs.TimberLib
 import timber.log.Timber
 
 class MyApplication: Application() {
