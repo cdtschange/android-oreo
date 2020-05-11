@@ -2,13 +2,13 @@ package com.cdts.oreo.ui.schema.view
 
 import `in`.srain.cube.views.ptr.*
 import android.annotation.SuppressLint
-import android.arch.lifecycle.Observer
 import android.database.DataSetObserver
-import android.databinding.ViewDataBinding
-import android.support.v4.content.ContextCompat
-import android.support.v4.widget.TextViewCompat
+import androidx.core.content.ContextCompat
+import androidx.core.widget.TextViewCompat
 import android.view.View
 import android.widget.*
+import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Observer
 import com.cdts.oreo.R
 import com.cdts.oreo.ui.schema.viewmodel.ORBaseListViewModel
 import com.cdts.oreo.ui.schema.viewmodel.ORBaseViewModel

@@ -1,7 +1,7 @@
 package com.cdts.demo.schema.view.webview
 
-import android.databinding.ViewDataBinding
 import android.view.View
+import androidx.databinding.ViewDataBinding
 import com.cdts.demo.R
 import com.cdts.demo.dagger.activity.DaggerFragmentComponent
 import com.cdts.demo.dagger.activity.module.FragmentModule

@@ -2,17 +2,17 @@ package com.cdts.oreo.ui.schema.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.ColorRes
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
+import androidx.annotation.ColorRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import com.cdts.oreo.data.model.SerializableMap
 import com.cdts.oreo.data.network.ORError
 import com.cdts.oreo.extension.addClickAction
@@ -151,9 +151,7 @@ abstract class ORBaseActivity: AppCompatActivity(), ORRouterProtocol {
     open fun setupNavigation() {
         titleBar?.let {
             setSupportActionBar(it.mToolbar)
-            supportActionBar?.let { actionBar ->
-                actionBar.setDisplayShowTitleEnabled(false)
-            }
+            supportActionBar?.setDisplayShowTitleEnabled(false)
             it.mToolbar.setNavigationOnClickListener { finish() }
         }
     }

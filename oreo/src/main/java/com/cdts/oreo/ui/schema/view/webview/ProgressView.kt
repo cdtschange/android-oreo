@@ -4,9 +4,9 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import android.support.annotation.ColorInt
 import android.util.AttributeSet
 import android.view.View
+import androidx.annotation.ColorInt
 
 class ProgressView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : View(context, attrs, defStyleAttr) {
     private lateinit var paint: Paint

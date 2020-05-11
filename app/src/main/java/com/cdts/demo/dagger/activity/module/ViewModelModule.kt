@@ -1,6 +1,6 @@
 package com.cdts.demo.dagger.activity.module
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import com.cdts.demo.dagger.activity.ActivityScope
 import com.cdts.demo.data.cache.repository.CacheRepository
 import com.cdts.demo.data.device.repository.DeviceInfoRepository

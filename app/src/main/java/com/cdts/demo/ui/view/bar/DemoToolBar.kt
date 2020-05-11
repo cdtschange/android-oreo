@@ -1,12 +1,12 @@
 package com.cdts.demo.ui.view.bar
 
 import android.content.Context
-import android.databinding.BindingAdapter
-import android.support.annotation.ColorInt
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.Toolbar
+import androidx.core.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View
+import androidx.annotation.ColorInt
+import androidx.appcompat.widget.Toolbar
+import androidx.databinding.BindingAdapter
 import com.cdts.demo.R
 import com.cdts.oreo.ui.router.ORRouter
 import com.cdts.oreo.ui.schema.view.Bind

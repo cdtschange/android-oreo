@@ -1,11 +1,11 @@
 package com.cdts.oreo.ui.view.toolbar
 
 import android.content.Context
-import android.support.v7.widget.Toolbar
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import androidx.appcompat.widget.Toolbar
 
 @Suppress("LeakingThis")
 abstract class ORToolBar: LinearLayout {

@@ -7,10 +7,10 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.net.http.SslError
 import android.os.Build
-import android.support.annotation.RequiresApi
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.*
+import androidx.annotation.RequiresApi
 import androidx.core.view.children
 import com.cdts.oreo.config.ORConfig
 import com.cdts.oreo.data.network.cookie.ORCookie

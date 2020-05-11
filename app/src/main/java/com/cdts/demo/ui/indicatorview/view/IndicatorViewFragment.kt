@@ -1,6 +1,5 @@
 package com.cdts.demo.ui.indicatorview.view
 
-import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater

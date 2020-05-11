@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/android-oreo.iml" filepath="$PROJECT_DIR$/android-oreo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oreo/oreo.iml" filepath="$PROJECT_DIR$/oreo/oreo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-oreo.iml" filepath="$PROJECT_DIR$/android-oreo.iml" group="android-oreo" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="android-oreo/app" />
+      <module fileurl="file://$PROJECT_DIR$/oreo/oreo.iml" filepath="$PROJECT_DIR$/oreo/oreo.iml" group="android-oreo/oreo" />
     </modules>
   </component>
 </project>

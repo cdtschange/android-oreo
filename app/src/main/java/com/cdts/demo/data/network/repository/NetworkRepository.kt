@@ -1,9 +1,6 @@
 package com.cdts.demo.data.network.repository
 
-import android.net.Uri
 import android.os.Environment
-import androidx.core.net.toFile
-import com.cdts.demo.BuildConfig
 import com.cdts.demo.R
 import com.cdts.demo.data.network.data.*
 import com.cdts.demo.schema.repository.BaseRepository

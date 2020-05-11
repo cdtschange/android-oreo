@@ -1,13 +1,13 @@
 package com.cdts.oreo.ui.schema.view
 
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import com.cdts.oreo.data.network.ORError
 import com.cdts.oreo.ui.router.ORRouter
 import com.cdts.oreo.ui.schema.lifecycle.ORActivityLifecycleObserver
@@ -41,7 +41,7 @@ abstract class ORBaseFragment : Fragment() {
         if (layoutResID != 0) {
             try {
                 binding = DataBindingUtil.inflate(inflater, layoutResID, container, false)
-                binding?.setLifecycleOwner(this)
+                binding?.lifecycleOwner = this
                 rootView = if(binding != null) binding?.root else inflater.inflate(layoutResID, container, false)
             } catch (e: Exception){
                 rootView = inflater.inflate(layoutResID, container, false)

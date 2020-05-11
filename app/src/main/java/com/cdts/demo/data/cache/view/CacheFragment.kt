@@ -1,15 +1,15 @@
 package com.cdts.demo.data.cache.view
 
-import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
+import androidx.databinding.ViewDataBinding
 import com.cdts.demo.R
-import com.cdts.demo.dagger.activity.DaggerFragmentComponent
 import com.cdts.demo.dagger.activity.module.FragmentModule
+import com.cdts.demo.dagger.activity.DaggerFragmentComponent
 import com.cdts.demo.data.cache.repository.CacheModel
 import com.cdts.demo.data.cache.repository.CacheType
 import com.cdts.demo.data.cache.viewmodel.CacheViewModel

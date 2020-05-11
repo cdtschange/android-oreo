@@ -1,10 +1,10 @@
 package com.cdts.oreo.ui.view.indicator
 
 import android.content.Context
-import android.support.annotation.DrawableRes
 import android.view.Gravity
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.DrawableRes
 import com.kaopiz.kprogresshud.KProgressHUD
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
