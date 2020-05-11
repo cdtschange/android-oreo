@@ -1,6 +1,7 @@
 package com.cdts.oreo.data.network.retrofit.converter
 
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Converter
@@ -18,7 +19,7 @@ class StringConverterFactory : Converter.Factory() {
     }
 
     companion object {
-        private val MEDIA_TYPE = MediaType.parse("text/plain")
+        private val MEDIA_TYPE = "text/plain".toMediaTypeOrNull()
         fun create(): StringConverterFactory {
             return StringConverterFactory()
         }

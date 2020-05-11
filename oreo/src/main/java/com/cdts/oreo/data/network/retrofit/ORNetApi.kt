@@ -15,6 +15,7 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
@@ -113,10 +114,10 @@ abstract class ORNetApi {
                     for((k, v) in it) {
                         builder = builder.addHeader(k, v)
                     }
-                    request = builder.method(request.method(), request.body()).build()
+                    request = builder.method(request.method, request.body).build()
                 }
                 baseParams?.let {
-                    var builder = request.url().newBuilder()
+                    var builder = request.url.newBuilder()
                     for((k, v) in it) {
                         builder = builder.addQueryParameter(k, v)
                     }
@@ -128,9 +129,7 @@ abstract class ORNetApi {
             }
 
         if (!ORConfig.isRelease) {
-            val logger = HttpLoggingInterceptor {
-                Timber.tag("HTTP").i(it)
-            }
+            val logger = HttpLoggingInterceptor()
             logger.level = HttpLoggingInterceptor.Level.BODY
             builder = builder.addInterceptor(logger)
         }
@@ -142,7 +141,7 @@ abstract class ORNetApi {
     }
     open fun adapt(response: Response): Response {
         if (!response.isSuccessful) {
-            throw ORError(response.code(), response.body()?.string() ?: "")
+            throw ORError(response.code, response.body?.string() ?: "")
         }
         return response
     }
@@ -254,7 +253,7 @@ abstract class ORNetApi {
     private fun getMultipartBody(api: ORNetApiModel): Map<String, RequestBody> {
         val body = mutableMapOf<String, RequestBody>()
         ((baseParams ?: mapOf()) + api.params).forEach { (key, value) ->
-            body[key] = RequestBody.create(MediaType.parse("multipart/form-data"), value)
+            body[key] = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), value)
         }
         return body
     }
@@ -271,7 +270,7 @@ abstract class ORNetApi {
     private fun createMultipartBodyPart(model: ORUploadMultipartFile): MultipartBody.Part {
         val extension = MimeTypeMap.getFileExtensionFromUrl(model.file.toURI().toString())
         val mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension)!!
-        val fileBody = RequestBody.create(MediaType.parse(mimeType), model.file)
+        val fileBody = RequestBody.create(mimeType.toMediaTypeOrNull(), model.file)
         return MultipartBody.Part.createFormData(model.name, model.fileName, fileBody)
     }
 }

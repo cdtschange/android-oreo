@@ -2,7 +2,6 @@ package com.cdts.oreo.data.local
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.navigation.NavDestination
 import com.cdts.oreo.ui.application.ORApplication
 
 object ORSharedPreferences {

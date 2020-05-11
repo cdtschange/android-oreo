@@ -15,7 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         debug {
@@ -41,6 +41,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
@@ -48,20 +51,20 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation "junit:junit:$rootProject.junit_version"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.kotlin_version"
-    testImplementation "com.android.support.test:runner:$rootProject.support_test_version"
-    testImplementation "com.android.support.test.espresso:espresso-core:$rootProject.support_test_espresso_version"
+    testImplementation "androidx.test.ext:junit:$rootProject.junit_test_version"
+    testImplementation "androidx.test.espresso:espresso-core:$rootProject.support_test_espresso_version"
     androidTestImplementation "junit:junit:$rootProject.junit_version"
     androidTestImplementation "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.kotlin_version"
-    androidTestImplementation "com.android.support.test:runner:$rootProject.support_test_version"
-    androidTestImplementation "com.android.support.test:rules:$rootProject.support_test_version"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.support_test_espresso_version"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.junit_test_version"
+    androidTestImplementation "androidx.test:rules:$rootProject.support_test_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.support_test_espresso_version"
     androidTestImplementation "org.mockito:mockito-core:$rootProject.mockito_version"
     androidTestImplementation "org.mockito:mockito-android:$rootProject.mockito_version"
     androidTestImplementation "com.nhaarman:mockito-kotlin:$rootProject.mockito_kotlin_version"
 
 
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
-    kapt "android.arch.lifecycle:compiler:$rootProject.lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycle_version"
 
     implementation "com.umeng.umsdk:analytics:$rootProject.umsdk_analytics_version"
     implementation "com.umeng.umsdk:common:$rootProject.umsdk_common_version"

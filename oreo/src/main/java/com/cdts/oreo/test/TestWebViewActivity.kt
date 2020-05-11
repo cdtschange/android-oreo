@@ -1,6 +1,6 @@
 package com.cdts.oreo.test
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.cdts.oreo.R
 import com.cdts.oreo.ui.schema.view.ORBaseActivity
 import com.cdts.oreo.ui.schema.view.webview.ORBaseWebViewFragment

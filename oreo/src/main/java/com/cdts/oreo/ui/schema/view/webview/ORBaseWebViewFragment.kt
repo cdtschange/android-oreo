@@ -1,11 +1,11 @@
 package com.cdts.oreo.ui.schema.view.webview
 
-import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebResourceError
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.databinding.ViewDataBinding
 import com.cdts.oreo.ui.schema.view.ORBaseFragment
 
 

@@ -1,9 +1,6 @@
 package com.cdts.oreo.data.local
 
-import android.arch.lifecycle.MutableLiveData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import androidx.lifecycle.MutableLiveData
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 

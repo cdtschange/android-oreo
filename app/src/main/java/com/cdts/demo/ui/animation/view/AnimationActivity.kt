@@ -4,7 +4,7 @@ import android.animation.AnimatorSet
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.LinearInterpolator
 import com.cdts.demo.R

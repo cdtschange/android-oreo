@@ -1,9 +1,9 @@
 package com.cdts.oreo.ui.schema.viewmodel
 
-import android.arch.lifecycle.MutableLiveData
 import android.database.DataSetObservable
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 
 open class ORBaseListViewModel: ORBaseViewModel() {
 

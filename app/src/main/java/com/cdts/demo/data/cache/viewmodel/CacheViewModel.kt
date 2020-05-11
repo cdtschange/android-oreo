@@ -7,7 +7,6 @@ import com.cdts.demo.data.cache.repository.CacheRepository
 import com.cdts.demo.data.cache.repository.CacheType
 import com.cdts.demo.schema.viewmodel.BaseListViewModel
 import com.cdts.demo.ui.application.MyApplication
-import com.cdts.demo.ui.listview.repository.ListTypeRepository
 import com.cdts.oreo.ui.schema.repository.ORBaseRepository
 import io.reactivex.Observable
 import javax.inject.Inject

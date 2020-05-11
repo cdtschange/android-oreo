@@ -1,10 +1,9 @@
 package com.cdts.oreo.ui.router
 
 import android.content.Intent
-import android.support.test.rule.ActivityTestRule
-import android.support.test.runner.AndroidJUnit4
-import android.support.v4.app.Fragment
 import android.view.View
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.rule.ActivityTestRule
 import com.cdts.oreo.BaseTestCase
 import com.cdts.oreo.R
 import com.cdts.oreo.data.network.ORError

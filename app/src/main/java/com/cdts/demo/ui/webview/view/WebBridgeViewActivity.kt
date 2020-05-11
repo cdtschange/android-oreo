@@ -1,6 +1,6 @@
 package com.cdts.demo.ui.webview.view
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.cdts.demo.R
 import com.cdts.demo.schema.view.webview.BaseWebViewActivity
 

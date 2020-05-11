@@ -1,6 +1,6 @@
 package com.cdts.demo.dagger.activity.module
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.cdts.demo.dagger.activity.ActivityScope
 import com.cdts.oreo.ui.view.indicator.ORIndicator
 import com.cdts.oreo.ui.view.indicator.ORIndicatorProtocol

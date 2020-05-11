@@ -9,10 +9,10 @@ import android.location.Location
 import android.net.wifi.WifiManager
 import android.os.Build
 import android.provider.Settings
-import android.support.annotation.RequiresApi
 import android.telephony.SubscriptionInfo
 import android.telephony.TelephonyManager
 import android.view.MotionEvent
+import androidx.annotation.RequiresApi
 import com.cdts.oreo.data.network.ORError
 import com.cdts.oreo.data.network.ORStatusCode
 import com.cdts.oreo.data.network.retrofit.ORNetworkStatus
