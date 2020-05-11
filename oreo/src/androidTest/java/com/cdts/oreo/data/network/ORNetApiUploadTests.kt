@@ -5,7 +5,7 @@ import android.content.ContentResolver
 import android.content.Context
 import android.net.Uri
 import android.os.Environment
-import android.support.test.rule.GrantPermissionRule
+import androidx.test.rule.GrantPermissionRule
 import com.cdts.oreo.BaseTestCase
 import com.cdts.oreo.data.network.retrofit.ORHttpMethod
 import com.cdts.oreo.data.network.retrofit.ORRequestType

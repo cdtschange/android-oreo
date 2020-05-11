@@ -2,8 +2,8 @@ package com.cdts.oreo.data.local
 
 import android.Manifest
 import android.os.Environment
-import android.support.test.InstrumentationRegistry
-import android.support.test.rule.GrantPermissionRule
+import androidx.test.InstrumentationRegistry
+import androidx.test.rule.GrantPermissionRule
 import com.cdts.oreo.BaseTestCase
 import org.junit.Rule
 import org.junit.Test

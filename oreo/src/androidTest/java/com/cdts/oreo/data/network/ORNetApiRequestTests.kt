@@ -16,15 +16,15 @@ class ORNetApiRequestTests: BaseTestCase() {
 
         class GetTestNetApi: TestNetApi() {
             override fun adapt(request: Request): Request {
-                assert(request.method() == "GET")
-                assert(request.url().url().path == "/get")
-                assert(request.url().url().toString().startsWith(NetApiTestConstant.urlString))
-                val query = request.url().query()!!.queryDictionary()
+                assert(request.method == "GET")
+                assert(request.url.toUri().path == "/get")
+                assert(request.url.toString().startsWith(NetApiTestConstant.urlString))
+                val query = request.url.query!!.queryDictionary()
                 assert(query.count() == NetApiTestConstant.baseParams.count() + NetApiTestConstant.params.count())
                 assert(query[NetApiTestConstant.baseParams.keys.first()] == NetApiTestConstant.baseParams.values.first())
                 assert(query[NetApiTestConstant.params.keys.first()] == NetApiTestConstant.params.values.first())
-                assert(request.headers().size() == NetApiTestConstant.baseHeaders.count())
-                assert(request.headers()[NetApiTestConstant.baseHeaders.keys.first()] == NetApiTestConstant.baseHeaders.values.first())
+                assert(request.headers.size == NetApiTestConstant.baseHeaders.count())
+                assert(request.headers[NetApiTestConstant.baseHeaders.keys.first()] == NetApiTestConstant.baseHeaders.values.first())
                 return super.adapt(request)
             }
         }
@@ -80,11 +80,11 @@ class ORNetApiRequestTests: BaseTestCase() {
 
         class PostTestNetApi: TestNetApi() {
             override fun adapt(request: Request): Request {
-                assert(request.method() == "POST")
-                assert(request.url().url().path == "/post")
-                assert(request.url().url().toString().startsWith(NetApiTestConstant.urlString))
-                assert(request.headers().size() == NetApiTestConstant.baseHeaders.count())
-                assert(request.headers()[NetApiTestConstant.baseHeaders.keys.first()] == NetApiTestConstant.baseHeaders.values.first())
+                assert(request.method == "POST")
+                assert(request.url.toUri().path == "/post")
+                assert(request.url.toString().startsWith(NetApiTestConstant.urlString))
+                assert(request.headers.size == NetApiTestConstant.baseHeaders.count())
+                assert(request.headers[NetApiTestConstant.baseHeaders.keys.first()] == NetApiTestConstant.baseHeaders.values.first())
                 return super.adapt(request)
             }
         }
@@ -129,11 +129,11 @@ class ORNetApiRequestTests: BaseTestCase() {
 
         class PostTestNetApi: TestNetApi() {
             override fun adapt(request: Request): Request {
-                assert(request.method() == "PUT")
-                assert(request.url().url().path == "/put")
-                assert(request.url().url().toString().startsWith(NetApiTestConstant.urlString))
-                assert(request.headers().size() == NetApiTestConstant.baseHeaders.count())
-                assert(request.headers()[NetApiTestConstant.baseHeaders.keys.first()] == NetApiTestConstant.baseHeaders.values.first())
+                assert(request.method == "PUT")
+                assert(request.url.toUri().path == "/put")
+                assert(request.url.toString().startsWith(NetApiTestConstant.urlString))
+                assert(request.headers.size == NetApiTestConstant.baseHeaders.count())
+                assert(request.headers[NetApiTestConstant.baseHeaders.keys.first()] == NetApiTestConstant.baseHeaders.values.first())
                 return super.adapt(request)
             }
         }
@@ -177,11 +177,11 @@ class ORNetApiRequestTests: BaseTestCase() {
 
         class PostTestNetApi: TestNetApi() {
             override fun adapt(request: Request): Request {
-                assert(request.method() == "DELETE")
-                assert(request.url().url().path == "/delete")
-                assert(request.url().url().toString().startsWith(NetApiTestConstant.urlString))
-                assert(request.headers().size() == NetApiTestConstant.baseHeaders.count())
-                assert(request.headers()[NetApiTestConstant.baseHeaders.keys.first()] == NetApiTestConstant.baseHeaders.values.first())
+                assert(request.method == "DELETE")
+                assert(request.url.toUri().path == "/delete")
+                assert(request.url.toString().startsWith(NetApiTestConstant.urlString))
+                assert(request.headers.size == NetApiTestConstant.baseHeaders.count())
+                assert(request.headers[NetApiTestConstant.baseHeaders.keys.first()] == NetApiTestConstant.baseHeaders.values.first())
                 return super.adapt(request)
             }
         }

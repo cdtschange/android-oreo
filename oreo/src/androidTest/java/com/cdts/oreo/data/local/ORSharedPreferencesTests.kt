@@ -1,7 +1,7 @@
 package com.cdts.oreo.data.local
 
-import android.support.test.rule.ActivityTestRule
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.rule.ActivityTestRule
 import com.cdts.oreo.BaseTestCase
 import com.cdts.oreo.test.MainTestActivity
 import org.junit.Rule
