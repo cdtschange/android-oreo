@@ -65,7 +65,7 @@ open class BaseWebViewFragment: ORBaseWebViewFragment() {
             function.onCallBack("Native: Callback")
         }
         registerWebViewMethod("choosePhoto") { _, function ->
-            ORPhotoActionSheet.showPhoto(activity!!) { success, uri, error ->
+            ORPhotoActionSheet.showPhoto(requireActivity()) { success, uri, error ->
                 if (success) {
                     Timber.i("$success $uri")
                     function.onCallBack(uri?.toString() ?: "")
