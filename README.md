@@ -2,10 +2,10 @@
 
 <p align="left">
     <a href="">
-        <img src="http://img.shields.io/badge/Android Studio-3.3.1-blue.svg" />
+        <img src="http://img.shields.io/badge/Android Studio-3.6.3-blue.svg" />
     </a>
     <a href="">
-        <img src="http://img.shields.io/badge/Kotlin-1.3.21-blue.svg" />
+        <img src="http://img.shields.io/badge/Kotlin-1.3.72-blue.svg" />
     </a>
     <a href="https://android-arsenal.com/api?level=19">
         <img src="https://img.shields.io/badge/API-19%2B-brightgreen.svg" />
