@@ -46,62 +46,9 @@ class ORTabNavigator (
         }
 
         transaction.setPrimaryNavigationFragment(fragment)
-
-        //反射获取mBackStack mIsPendingBackStackOperation
-        val mBackStackField = FragmentNavigator::class.java.getDeclaredField("mBackStack")
-        mBackStackField.isAccessible = true
-        var mBackStack: ArrayDeque<Int> = mBackStackField.get(this) as ArrayDeque<Int>
-        val mIsPendingBackStackOperationField =
-            FragmentNavigator::class.java.getDeclaredField("mIsPendingBackStackOperation")
-        mIsPendingBackStackOperationField.isAccessible = true
-        var mIsPendingBackStackOperation: Boolean = mIsPendingBackStackOperationField.get(this) as Boolean
-
-        @IdRes val destId = destination.id
-        val initialNavigation = mBackStack.isEmpty()
-        // TODO Build first class singleTop behavior for fragments
-        val isSingleTopReplacement = (navOptions != null && !initialNavigation
-                && navOptions.shouldLaunchSingleTop()
-                && mBackStack.last().toInt() == destId)
-
-        val isAdded: Boolean
-        if (initialNavigation) {
-            isAdded = true
-        } else if (isSingleTopReplacement) {
-            // Single Top means we only want one instance on the back stack
-            if (mBackStack.size > 1) {
-                // If the Fragment to be replaced is on the FragmentManager's
-                // back stack, a simple replace() isn't enough so we
-                // remove it from the back stack and put our replacement
-                // on the back stack in its place
-                manager.popBackStack(
-                    generateMyBackStackName(mBackStack.size, mBackStack.last()),
-                    FragmentManager.POP_BACK_STACK_INCLUSIVE
-                )
-                transaction.addToBackStack(generateMyBackStackName(mBackStack.size, destId))
-                mIsPendingBackStackOperation = true
-                mIsPendingBackStackOperationField.set(this, true)
-            }
-            isAdded = false
-        } else {
-            transaction.addToBackStack(generateMyBackStackName(mBackStack.size + 1, destId))
-            mIsPendingBackStackOperation = true
-            mIsPendingBackStackOperationField.set(this, true)
-            isAdded = true
-        }
-
         transaction.setReorderingAllowed(true)
         transaction.commit()
-
-        return if (isAdded) {
-            mBackStack.add(destId)
-            destination
-        } else {
-            null
-        }
-    }
-
-    private fun generateMyBackStackName(backStackIndex: Int, destId: Int): String {
-        return "$backStackIndex-$destId"
+        return destination
     }
 }
 
