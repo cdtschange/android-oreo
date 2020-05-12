@@ -15,7 +15,8 @@ branches:
 
 script:
 #- ./gradlew assembleRelease
-- ./gradlew build connectedCheck
+- travis_wait 60
+  ./gradlew build connectedCheck
 
 before_script:
 # 修改你的 gradlew的权限，默认gradlew没有权限执行的
