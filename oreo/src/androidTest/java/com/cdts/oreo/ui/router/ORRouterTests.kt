@@ -72,37 +72,37 @@ class ORRouterTests: BaseTestCase() {
             activity2.removeResultObserver(ob)
             delay(3000)
             activity2.onBackPressed()
-            delay(1000)
-            assert(ORRouter.routeToUrl("com.cdts.oreo.test.TestWebViewActivity", "https://www.baidu.com"))
-            delay(4000)
-            val activity3 = ORRouter.topActivity() as TestWebViewActivity
-            val fragment3 = activity3.fragment as TestWebViewFragment
-            print(fragment3.indicator)
-            print(fragment3.viewModel)
-            fragment3.showIndicator()
-            fragment3.hideIndicator()
-            fragment3.showTip(ORError(0, "")) {}
-            fragment3.showTip(InvalidParameterException("")) {}
-            fragment3.showTip("") {}
-            fragment3.showIndicatorObserver().subscribe()
-            fragment3.invokeWebViewMethod("test", "")
-
-            assert(ORRouter.routeBack())
-            delay(1000)
-            assert(ORRouter.routeToHtmlData("com.cdts.oreo.test.TestWebViewActivity", "<raw>\n" +
-                    "    <head>\n" +
-                    "        <meta content=\"text/raw; charset=utf-8\" http-equiv=\"content-type\"/>\n" +
-                    "        <title>\n" +
-                    "            Simple Html\n" +
-                    "        </title>\n" +
-                    "    </head>\n" +
-                    "    <body>\n" +
-                    "        <h1>Hello World!</h1>\n" +
-                    "    </body>\n" +
-                    "</raw>"))
-            delay(2000)
-            assert(ORRouter.routeBack())
-            delay(1000)
+//            delay(1000)
+//            assert(ORRouter.routeToUrl("com.cdts.oreo.test.TestWebViewActivity", "https://www.baidu.com"))
+//            delay(4000)
+//            val activity3 = ORRouter.topActivity() as TestWebViewActivity
+//            val fragment3 = activity3.fragment as TestWebViewFragment
+//            print(fragment3.indicator)
+//            print(fragment3.viewModel)
+//            fragment3.showIndicator()
+//            fragment3.hideIndicator()
+//            fragment3.showTip(ORError(0, "")) {}
+//            fragment3.showTip(InvalidParameterException("")) {}
+//            fragment3.showTip("") {}
+//            fragment3.showIndicatorObserver().subscribe()
+//            fragment3.invokeWebViewMethod("test", "")
+//
+//            assert(ORRouter.routeBack())
+//            delay(1000)
+//            assert(ORRouter.routeToHtmlData("com.cdts.oreo.test.TestWebViewActivity", "<raw>\n" +
+//                    "    <head>\n" +
+//                    "        <meta content=\"text/raw; charset=utf-8\" http-equiv=\"content-type\"/>\n" +
+//                    "        <title>\n" +
+//                    "            Simple Html\n" +
+//                    "        </title>\n" +
+//                    "    </head>\n" +
+//                    "    <body>\n" +
+//                    "        <h1>Hello World!</h1>\n" +
+//                    "    </body>\n" +
+//                    "</raw>"))
+//            delay(2000)
+//            assert(ORRouter.routeBack())
+//            delay(1000)
 
             signal()
         }
