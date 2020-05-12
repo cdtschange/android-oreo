@@ -15,7 +15,7 @@ branches:
 
 script:
 #- ./gradlew assembleRelease
-- ./gradlew build connectedCheck
+- ./gradlew build connectedCheck --stacktrace --debug
 
 before_script:
 # 修改你的 gradlew的权限，默认gradlew没有权限执行的
